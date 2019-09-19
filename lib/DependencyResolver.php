@@ -25,10 +25,13 @@
 
 namespace Granule\DataBind;
 
-use Granule\DataBind\Serializer\{
-    CollectionSerializer, DateTimeSerializer, EnumSerializer,
-    MapSerializer, POCOSerializer, PrimitiveTypeSerializer
-};
+use Granule\DataBind\Serializer\{CollectionSerializer,
+    DateTimeSerializer,
+    EnumSerializer,
+    EnumWordingSerializer,
+    MapSerializer,
+    POCOSerializer,
+    PrimitiveTypeSerializer};
 use Granule\DataBind\Serializer\TypeDetector\{
     AccessorTypeDetector, PropertyDocCommentTypeDetector
 };
@@ -57,6 +60,7 @@ class DependencyResolver {
             ->add(new PrimitiveTypeSerializer())
             ->add(new CollectionSerializer())
             ->add(new MapSerializer())
+            ->add(new EnumWordingSerializer())
             ->add(new EnumSerializer())
             ->addBottom(new POCOSerializer(
                 new AccessorTypeDetector(
