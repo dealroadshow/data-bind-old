@@ -19,6 +19,6 @@ class EnumWordingSerializer extends Serializer {
     }
 
     protected function unserializeItem($data, Type $type) {
-        return call_user_func([$type->getName(), 'fromWording'], func_get_args());
+        return call_user_func([$type->getName(), 'fromWording'], $data);
     }
 }
