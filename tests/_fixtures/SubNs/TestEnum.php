@@ -27,6 +27,10 @@ namespace Granule\Tests\DataBind\_fixtures\SubNs;
 
 use Granule\Util\Enum;
 
+/**
+ * @method static TestEnum yes()
+ * @method static TestEnum no()
+ */
 class TestEnum extends Enum {
     private const
         yes = 'yes',
