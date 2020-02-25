@@ -35,7 +35,7 @@ final class Helper {
         ReflectionProperty $reflectionProperty,
         string $statement
     ): ?string {
-        $regexp = sprintf('/@%s\s+([\\a-zA-Z0-9_?]+)\s+[.*]/s', $statement);
+        $regexp = sprintf('/@%s\s+([\\a-zA-Z0-9_?|]+)\s+[.*]/s', $statement);
         if (preg_match_all($regexp, $reflectionProperty->getDocComment(), $matches)) {
             return $matches[1][0];
         }

@@ -31,19 +31,36 @@ class TypeDeclaration extends Type {
     /** @var bool */
     private $inArray;
 
-    protected function __construct(string $name, bool $nullable = false, bool $inArray = false) {
+    protected function __construct(
+        string $name,
+        bool $nullable = false,
+        bool $inArray = false
+    ) {
         parent::__construct($name);
         $this->nullable = $nullable;
         $this->inArray = $inArray;
     }
 
     public static function fromSignature(string $signature): TypeDeclaration {
-        $nullable = substr($signature, 0, 1) === '?';
-        $signature = $nullable ? substr($signature, 1) : $signature;
+        $compatibilityNullable = substr($signature, 0, 1) === '?';
+        $leftNullable = substr($signature, 0, 5) === 'null|';
+        $rightNullable = substr($signature, -5) === '|null';
+        if ($compatibilityNullable) {
+            $signature = substr($signature, 1);
+        } elseif ($leftNullable) {
+            $signature = substr($signature, 5);
+        } elseif ($rightNullable) {
+            $signature = substr($signature, 0, -5);
+        }
+
         $inArray = substr($signature, -2) === '[]';
         $signature = $inArray ? substr($signature, 0, -2) : $signature;
 
-        return new self($signature, $nullable, $inArray);
+        return new self(
+            $signature,
+            $compatibilityNullable || $leftNullable || $rightNullable,
+            $inArray
+        );
     }
 
     public static function fromReflection(\ReflectionType $reflection): TypeDeclaration {

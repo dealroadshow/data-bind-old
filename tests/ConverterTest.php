@@ -25,23 +25,28 @@
 
 namespace Granule\Tests\DataBind;
 
-use Granule\DataBind\DependencyResolver;
+use DateTimeImmutable;
 use Granule\DataBind\Converter;
-use Granule\Tests\DataBind\_fixtures\{
-    SubNs\TestArrayMap, TestCollection, TestInternalObject, TestObject, SubNs\TestEnum
-};
+use Granule\DataBind\DependencyResolver;
+use Granule\Tests\DataBind\_fixtures\SubNs\TestArrayMap;
+use Granule\Tests\DataBind\_fixtures\SubNs\TestEnum;
+use Granule\Tests\DataBind\_fixtures\TestCollection;
+use Granule\Tests\DataBind\_fixtures\TestInternalObject;
+use Granule\Tests\DataBind\_fixtures\TestObject;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
+use ReflectionException;
 
 /**
  * @group integration
- * @coversDefaultClass Granule\DataBind\Converter
+ * @coversDefaultClass Converter
  */
 class ConverterTest extends TestCase {
 
     /** @var Converter */
     private static $converter;
 
-    public static function setUpBeforeClass() {
+    public static function setUpBeforeClass(): void {
         $resolver = DependencyResolver::builder()->build();
         self::$converter = new Converter($resolver);
     }
@@ -50,23 +55,26 @@ class ConverterTest extends TestCase {
         return [
             [
                 [
+                    'compatibilityNullableString' => null,
+                    'leftNullableString' => null,
+                    'rightNullableString' => null,
                     'somestring' => 'some text',
                     'someint' => 1235,
                     'layers' => [
-                        ['name'=> 'layer 1'],
-                        ['name'=> 'layer 18']
+                        ['name' => 'layer 1'],
+                        ['name' => 'layer 18']
                     ],
                     'collection' => [
-                        ['name'=> 'layer 1'],
-                        ['name'=> 'layer 18']
+                        ['name' => 'layer 1'],
+                        ['name' => 'layer 18']
                     ],
                     'map' => [
-                        'l1' => ['name'=> 'layer 1'],
-                        'l18' => ['name'=> 'layer 18']
+                        'l1' => ['name' => 'layer 1'],
+                        'l18' => ['name' => 'layer 18']
                     ],
                     'somebool' => true,
                     'question' => 'yes',
-                    'layer' => ['name'=> 'the one'],
+                    'layer' => ['name' => 'the one'],
                     'birthdate' => 'Friday, 20-Jul-84 00:00:00 UTC'
                 ],
                 TestObject::class
@@ -78,7 +86,7 @@ class ConverterTest extends TestCase {
      * @test
      * @dataProvider getFixture
      *
-     * @param array $fixture
+     * @param array  $fixture
      * @param string $class
      */
     public function it_should_unserialize_basic_structure(array $fixture, string $class): void {
@@ -94,46 +102,103 @@ class ConverterTest extends TestCase {
         $fixture = $this->getFixture()[0][0];
 
         return [
+            'compatibilityNullableString' => [
+                $fixture,
+                'compatibilityNullableString',
+                function ($value) {
+                    return is_null($value);
+                },
+                function ($value) {
+                    return $value;
+                },
+                null
+            ],
+            'leftNullableString' => [
+                $fixture,
+                'leftNullableString',
+                function ($value) {
+                    return is_null($value);
+                },
+                function ($value) {
+                    return $value;
+                },
+                null
+            ],
+            'rightNullableString' => [
+                $fixture,
+                'rightNullableString',
+                function ($value) {
+                    return is_null($value);
+                },
+                function ($value) {
+                    return $value;
+                },
+                null
+            ],
             'string' => [
                 $fixture,
                 'somestring',
-                function ($value) { return is_string($value); },
-                function ($value) { return $value; },
+                function ($value) {
+                    return is_string($value);
+                },
+                function ($value) {
+                    return $value;
+                },
                 'some text'
             ],
             'int' => [
                 $fixture,
                 'someint',
-                function ($value) { return is_integer($value); },
-                function ($value) { return $value; },
+                function ($value) {
+                    return is_integer($value);
+                },
+                function ($value) {
+                    return $value;
+                },
                 1235
             ],
             'object' => [
                 $fixture,
                 'layer',
-                function ($value) { return $value instanceof TestInternalObject; },
-                function ($value) { return $value->getName(); },
+                function ($value) {
+                    return $value instanceof TestInternalObject;
+                },
+                function (TestInternalObject $value) {
+                    return $value->getName();
+                },
                 'the one'
             ],
             'DateTime' => [
                 $fixture,
                 'birthdate',
-                function ($value) { return $value instanceof \DateTimeImmutable; },
-                function ($value) { return $value->format(DATE_RFC850); },
+                function ($value) {
+                    return $value instanceof DateTimeImmutable;
+                },
+                function (DateTimeImmutable $value) {
+                    return $value->format(DATE_RFC850);
+                },
                 'Friday, 20-Jul-84 00:00:00 UTC'
             ],
             'bool' => [
                 $fixture,
                 'somebool',
-                function ($value) { return is_bool($value); },
-                function ($value) { return $value; },
+                function ($value) {
+                    return is_bool($value);
+                },
+                function ($value) {
+                    return $value;
+                },
                 true
             ],
             'Enum' => [
                 $fixture,
                 'question',
-                function ($value) { return $value instanceof TestEnum; },
-                function ($value) { return $value; },
+                function ($value) {
+                    return $value instanceof TestEnum;
+                },
+                function ($value) {
+                    return $value;
+                },
                 TestEnum::yes()
             ]
         ];
@@ -143,25 +208,31 @@ class ConverterTest extends TestCase {
      * @test
      * @dataProvider inlineTypeProvider
      *
-     * @param array $fixture
-     * @param string $param
+     * @param array    $fixture
+     * @param string   $param
      * @param callable $check
-     * @param mixed $expected
+     * @param callable $cast
+     * @param mixed    $expected
+     *
+     * @throws ReflectionException
      */
     public function it_should_unserialize_specific_type(
-        array $fixture, string $param,
-        callable $check, callable $cast, $expected
+        array $fixture,
+        string $param,
+        callable $check,
+        callable $cast,
+        $expected
     ): void {
-        /** @var TestObject $deserealized */
-        $deserealized = self::$converter
+        /** @var TestObject $deserialized */
+        $deserialized = self::$converter
             ->fromArray($fixture)
             ->toObject(TestObject::class);
 
-        $reflector = new \ReflectionClass($deserealized);
+        $reflector = new ReflectionClass($deserialized);
 
         $property = $reflector->getProperty($param);
         $property->setAccessible(true);
-        $value = $property->getValue($deserealized);
+        $value = $property->getValue($deserialized);
         $this->assertTrue($check($value), 'Check value type');
         $this->assertTrue($expected === $cast($value), 'Check value equality');
     }
@@ -173,28 +244,46 @@ class ConverterTest extends TestCase {
             'object[]' => [
                 $fixture,
                 'layers',
-                function ($value) { return is_array($value); },
+                function ($value) {
+                    return is_array($value);
+                },
                 2,
-                function ($value) { return $value[0] instanceof TestInternalObject; },
-                function ($value) { return $value[0]->getName(); },
+                function ($value) {
+                    return $value[0] instanceof TestInternalObject;
+                },
+                function ($value) {
+                    return $value[0]->getName();
+                },
                 'layer 1'
             ],
             'ArrayCollection' => [
                 $fixture,
                 'collection',
-                function ($value) { return $value instanceof TestCollection; },
+                function ($value) {
+                    return $value instanceof TestCollection;
+                },
                 2,
-                function ($value) { return $value[0] instanceof TestInternalObject; },
-                function ($value) { return $value[0]->getName(); },
+                function ($value) {
+                    return $value[0] instanceof TestInternalObject;
+                },
+                function ($value) {
+                    return $value[0]->getName();
+                },
                 'layer 1'
             ],
             'ArrayMap' => [
                 $fixture,
                 'map',
-                function ($value) { return $value instanceof TestArrayMap; },
+                function ($value) {
+                    return $value instanceof TestArrayMap;
+                },
                 2,
-                function ($value) { return $value['l18'] instanceof TestInternalObject; },
-                function ($value) { return $value['l18']->getName(); },
+                function ($value) {
+                    return $value['l18'] instanceof TestInternalObject;
+                },
+                function ($value) {
+                    return $value['l18']->getName();
+                },
                 'layer 18'
             ]
         ];
@@ -204,24 +293,31 @@ class ConverterTest extends TestCase {
      * @test
      * @dataProvider listTypeProvider
      *
-     * @param array $fixture
-     * @param string $param
+     * @param array    $fixture
+     * @param string   $param
      * @param callable $checkListType
-     * @param int $count
+     * @param int      $count
      * @param callable $checkItemType
      * @param callable $castItem
-     * @param $expected
+     * @param          $expected
+     *
+     * @throws ReflectionException
      */
     public function it_should_unserialize_list_type(
-        array $fixture, string $param, callable $checkListType, int $count,
-        callable $checkItemType, callable $castItem, $expected
+        array $fixture,
+        string $param,
+        callable $checkListType,
+        int $count,
+        callable $checkItemType,
+        callable $castItem,
+        $expected
     ): void {
         /** @var TestObject $deserealized */
         $deserealized = self::$converter
             ->fromArray($fixture)
             ->toObject(TestObject::class);
 
-        $reflector = new \ReflectionClass($deserealized);
+        $reflector = new ReflectionClass($deserealized);
 
         $property = $reflector->getProperty($param);
         $property->setAccessible(true);
@@ -232,23 +328,22 @@ class ConverterTest extends TestCase {
         $this->assertEquals($expected, $castItem($value), 'Item check');
     }
 
-
     /**
      * @test
      * @dataProvider getFixture
      * @ depends is_should_deserialize_basic_structure
      *
-     * @param array $fixture
+     * @param array  $fixture
      * @param string $class
      */
     public function it_should_serialize_basic_object(array $fixture, string $class): void {
-        /** @var TestObject $deserealized */
-        $deserealized = self::$converter
+        /** @var TestObject $deserialized */
+        $deserialized = self::$converter
             ->fromArray($fixture)
             ->toObject($class);
 
         $serialized = self::$converter
-            ->fromObject($deserealized)
+            ->fromObject($deserialized)
             ->toSimpleType();
 
         $this->assertTrue(is_array($serialized));
