@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "516a7e9a04e4a8ddcb951a48acb23d25",
+    "content-hash": "4904c15c4f93b0c71a1a39b23d8c2497",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
-            "version": "v0.3.7",
+            "version": "dev-FIN-10334-handle-invalid-user-input",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "bc4134d6428aa0f3692115c61d51155f074ab4e2"
+                "reference": "c94c5153a3ee2115a5a7f55899e36d3f662a6aaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/bc4134d6428aa0f3692115c61d51155f074ab4e2",
-                "reference": "bc4134d6428aa0f3692115c61d51155f074ab4e2",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/c94c5153a3ee2115a5a7f55899e36d3f662a6aaf",
+                "reference": "c94c5153a3ee2115a5a7f55899e36d3f662a6aaf",
                 "shasum": ""
             },
             "require": {
@@ -56,9 +56,9 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/dealroadshow/util/tree/v0.3.7"
+                "source": "https://github.com/dealroadshow/util/tree/FIN-10334-handle-invalid-user-input"
             },
-            "time": "2019-09-18T13:40:59+00:00"
+            "time": "2021-03-03T09:13:33+00:00"
         }
     ],
     "packages-dev": [
@@ -1584,12 +1584,15 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "dealroadshow/granule-util": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.1",
         "ext-yaml": "^2.0"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
 }
