@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "516a7e9a04e4a8ddcb951a48acb23d25",
+    "content-hash": "db2e8f978773fba3e29293ad8fdc922d",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
-            "version": "v0.3.7",
+            "version": "0.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "bc4134d6428aa0f3692115c61d51155f074ab4e2"
+                "reference": "1d7e34ea467cbebfb44e795e0f69ee04842b2df8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/bc4134d6428aa0f3692115c61d51155f074ab4e2",
-                "reference": "bc4134d6428aa0f3692115c61d51155f074ab4e2",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/1d7e34ea467cbebfb44e795e0f69ee04842b2df8",
+                "reference": "1d7e34ea467cbebfb44e795e0f69ee04842b2df8",
                 "shasum": ""
             },
             "require": {
@@ -56,9 +56,9 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/dealroadshow/util/tree/v0.3.7"
+                "source": "https://github.com/dealroadshow/util/tree/0.3.8"
             },
-            "time": "2019-09-18T13:40:59+00:00"
+            "time": "2021-03-15T11:33:48+00:00"
         }
     ],
     "packages-dev": [
@@ -1591,5 +1591,6 @@
         "php": "^7.1",
         "ext-yaml": "^2.0"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
 }
