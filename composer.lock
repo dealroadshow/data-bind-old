@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4904c15c4f93b0c71a1a39b23d8c2497",
+    "content-hash": "db2e8f978773fba3e29293ad8fdc922d",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
-            "version": "dev-FIN-10334-handle-invalid-user-input",
+            "version": "0.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "c94c5153a3ee2115a5a7f55899e36d3f662a6aaf"
+                "reference": "1d7e34ea467cbebfb44e795e0f69ee04842b2df8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/c94c5153a3ee2115a5a7f55899e36d3f662a6aaf",
-                "reference": "c94c5153a3ee2115a5a7f55899e36d3f662a6aaf",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/1d7e34ea467cbebfb44e795e0f69ee04842b2df8",
+                "reference": "1d7e34ea467cbebfb44e795e0f69ee04842b2df8",
                 "shasum": ""
             },
             "require": {
@@ -56,9 +56,9 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/dealroadshow/util/tree/FIN-10334-handle-invalid-user-input"
+                "source": "https://github.com/dealroadshow/util/tree/0.3.8"
             },
-            "time": "2021-03-03T09:13:33+00:00"
+            "time": "2021-03-15T11:33:48+00:00"
         }
     ],
     "packages-dev": [
@@ -1584,9 +1584,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "dealroadshow/granule-util": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
