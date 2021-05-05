@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db2e8f978773fba3e29293ad8fdc922d",
+    "content-hash": "998872a1c29500c613d516faa60b0a7c",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
-            "version": "0.3.8",
+            "version": "dev-FIN-10857-update-php-to7-4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "1d7e34ea467cbebfb44e795e0f69ee04842b2df8"
+                "reference": "a07f329bddf957f260d33d91d087ae6c9d1af6c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/1d7e34ea467cbebfb44e795e0f69ee04842b2df8",
-                "reference": "1d7e34ea467cbebfb44e795e0f69ee04842b2df8",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/a07f329bddf957f260d33d91d087ae6c9d1af6c7",
+                "reference": "a07f329bddf957f260d33d91d087ae6c9d1af6c7",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1"
+                "php": "^7.1, <8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^6"
@@ -56,9 +56,9 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/dealroadshow/util/tree/0.3.8"
+                "source": "https://github.com/dealroadshow/util/tree/FIN-10857-update-php-to7-4"
             },
-            "time": "2021-03-15T11:33:48+00:00"
+            "time": "2021-05-05T17:56:37+00:00"
         }
     ],
     "packages-dev": [
@@ -1584,11 +1584,13 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "dealroadshow/granule-util": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.1",
+        "php": ">=7.4, <8.0",
         "ext-yaml": "^2.0"
     },
     "platform-dev": [],
