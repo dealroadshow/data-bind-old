@@ -8,7 +8,7 @@
         "dealroadshow/granule-util": "dev-FIN-10857-update-php-to7-4"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6"
+        "phpunit/phpunit": "^9"
     },
     "repositories": [
       {
