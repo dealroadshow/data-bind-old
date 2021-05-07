@@ -2,7 +2,8 @@
 
 namespace Granule\DataBind\Serializer;
 
-use Granule\DataBind\{Serializer, Type};
+use Granule\DataBind\Serializer;
+use Granule\DataBind\Type;
 use Granule\Util\EnumWording;
 
 class EnumWordingSerializer extends Serializer {

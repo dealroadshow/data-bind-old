@@ -25,10 +25,14 @@
 
 namespace Granule\DataBind\Serializer;
 
-use Granule\DataBind\{
-    DependencyResolver, DependencyResolverAware, TypeDeclaration, Serializer, Type
-};
-use Granule\Util\{Map, StrictTypedKey, StrictTypedValue};
+use Granule\DataBind\DependencyResolver;
+use Granule\DataBind\DependencyResolverAware;
+use Granule\DataBind\TypeDeclaration;
+use Granule\DataBind\Serializer;
+use Granule\DataBind\Type;
+use Granule\Util\Map;
+use Granule\Util\StrictTypedKey;
+use Granule\Util\StrictTypedValue;
 
 class MapSerializer extends Serializer implements DependencyResolverAware {
     use KeyTypeExtraction;

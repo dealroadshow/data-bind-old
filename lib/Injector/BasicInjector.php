@@ -25,9 +25,9 @@
 
 namespace Granule\DataBind\Injector;
 
-use Granule\DataBind\{
-    DependencyResolver, TypeDeclaration, Injector
-};
+use Granule\DataBind\DependencyResolver;
+use Granule\DataBind\TypeDeclaration;
+use Granule\DataBind\Injector;
 
 class BasicInjector implements Injector {
     /** @var mixed */

@@ -26,28 +26,43 @@
 namespace Granule\DataBind\Serializer\TypeDetector;
 
 use Granule\DataBind\TypeDeclaration;
+use Granule\DataBind\Helper;
 use Granule\DataBind\Serializer\TypeDetector;
 use ReflectionProperty;
 
-class AccessorTypeDetector extends TypeDetector {
+class PropertyTypeDetector extends TypeDetector {
     protected function perform(ReflectionProperty $property): ?TypeDeclaration {
-        $propertyName = $property->getName();
-        $getterSuffix = ucfirst($propertyName);
-        $reflectionClass = $property->getDeclaringClass();
+        if ($property->hasType()) {
 
-        foreach ([
-            'get'.$getterSuffix,
-            'is'.$getterSuffix,
-            $getterSuffix
-        ] as $getterName) {
-            if ($reflectionClass->hasMethod($getterName)) {
-                $getter = $reflectionClass->getMethod($getterName);
-                if ($getter->hasReturnType()) {
-                    return TypeDeclaration::fromReflection($getter->getReturnType());
+            $type = TypeDeclaration::fromReflectionProperty($property);
+
+            if (!Helper::isBuiltinType($type->getName()) && !class_exists($type->getName())) {
+                $typeName = PropertyDocCommentTypeDetector::resolveObjectType(
+                    $type->getName(),
+                    $property->getDeclaringClass()->getFileName()
+                );
+
+                if (!$typeName || !class_exists($typeName)) {
+                    $sameNsTypeName = $property
+                                          ->getDeclaringClass()
+                                          ->getNamespaceName()
+                                      .'\\'.$type->getName();
+
+                    if (class_exists($sameNsTypeName)) {
+                        return $type->withName($sameNsTypeName);
+                    }
+
+                    return null;
                 }
+
+                $type = $type->withName($typeName);
             }
+
+            return $type;
         }
+
 
         return null;
     }
+
 }

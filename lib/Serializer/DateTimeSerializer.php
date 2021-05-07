@@ -28,7 +28,8 @@ namespace Granule\DataBind\Serializer;
 
 use DateTimeImmutable;
 use DateTimeInterface;
-use Granule\DataBind\{Serializer, Type};
+use Granule\DataBind\Serializer;
+use Granule\DataBind\Type;
 
 class DateTimeSerializer extends Serializer {
     public function matches(Type $type): bool {

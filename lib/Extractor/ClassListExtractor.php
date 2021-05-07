@@ -25,7 +25,8 @@
 
 namespace Granule\DataBind\Extractor;
 
-use Granule\DataBind\{DependencyResolver, Type};
+use Granule\DataBind\DependencyResolver;
+use Granule\DataBind\Type;
 
 class ClassListExtractor extends BasicExtractor {
     /** @var DependencyResolver */

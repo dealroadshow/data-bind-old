@@ -25,9 +25,11 @@
 
 namespace Granule\DataBind\Serializer;
 
-use Granule\DataBind\{
-    DependencyResolver, DependencyResolverAware, Serializer, Type, Helper
-};
+use Granule\DataBind\DependencyResolver;
+use Granule\DataBind\DependencyResolverAware;
+use Granule\DataBind\Serializer;
+use Granule\DataBind\Type;
+use Granule\DataBind\Helper;
 
 class PrimitiveTypeSerializer extends Serializer implements DependencyResolverAware {
     /** @var DependencyResolver */

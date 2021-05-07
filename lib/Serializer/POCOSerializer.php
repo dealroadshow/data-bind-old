@@ -25,9 +25,13 @@
 
 namespace Granule\DataBind\Serializer;
 
-use Granule\DataBind\{
-    DependencyResolver, DependencyResolverAware, InvalidDataException, Serializer, Type
-};
+use Granule\DataBind\DependencyResolver;
+use Granule\DataBind\DependencyResolverAware;
+use Granule\DataBind\InvalidDataException;
+use Granule\DataBind\Serializer;
+use Granule\DataBind\Type;
+use ReflectionClass;
+use ReflectionProperty;
 
 /**
  * Plain Old Control Object serializer
@@ -39,7 +43,7 @@ class POCOSerializer extends Serializer implements DependencyResolverAware {
     private $resolver;
     /** @var bool */
     private $skipNull;
-    /** @var array  */
+    /** @var array */
     private $extendableClasses;
 
     public function setResolver(DependencyResolver $resolver): void {
@@ -56,18 +60,21 @@ class POCOSerializer extends Serializer implements DependencyResolverAware {
         return class_exists($type->getName());
     }
 
-    public function serialize($data) {
+    public function serialize($data): array {
         $response = [];
         foreach ($this->extractProperties($data) as $reflectionProperty) {
             if (!$reflectionProperty->isPublic()) {
                 $reflectionProperty->setAccessible(true);
             }
-
-            $value = $reflectionProperty->getValue($data);
-            if ($value !== null) {
-                $serializer = $this->resolver->resolve(Type::fromData($value));
-                $response[$reflectionProperty->getName()] = $serializer->serialize($value);
-            } elseif (!$this->skipNull) {
+            if ($reflectionProperty->isInitialized($data)) {
+                $value = $reflectionProperty->getValue($data);
+                if ($value !== null) {
+                    $serializer = $this->resolver->resolve(Type::fromData($value));
+                    $response[$reflectionProperty->getName()] = $serializer->serialize($value);
+                } elseif (!$this->skipNull) {
+                    $response[$reflectionProperty->getName()] = null;
+                }
+            } else {
                 $response[$reflectionProperty->getName()] = null;
             }
         }
@@ -85,18 +92,23 @@ class POCOSerializer extends Serializer implements DependencyResolverAware {
         return false;
     }
 
+    /**
+     * @param $data
+     *
+     * @return ReflectionProperty[]
+     */
     private function extractProperties($data): array {
         if ($this->isExtendableClass($data)) {
             return $this->getAllProperties($data);
         }
 
-        return (new \ReflectionClass($data))->getProperties();
+        return (new ReflectionClass($data))->getProperties();
     }
 
     private function getAllProperties($data): array {
         $properties = [];
 
-        $reflectionClass = new \ReflectionClass($data);
+        $reflectionClass = new ReflectionClass($data);
         do {
             $currentProperties = [];
             foreach ($reflectionClass->getProperties() as $reflectionProperty) {
@@ -109,8 +121,11 @@ class POCOSerializer extends Serializer implements DependencyResolverAware {
         return $properties;
     }
 
+    /**
+     * @throws \ReflectionException
+     */
     protected function unserializeItem($data, Type $type) {
-        $class = new \ReflectionClass($type->getName());
+        $class = new ReflectionClass($type->getName());
         $object = $class->newInstanceWithoutConstructor();
 
         if (!is_array($data)) {
