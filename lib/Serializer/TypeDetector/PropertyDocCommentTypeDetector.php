@@ -25,9 +25,9 @@
 
 namespace Granule\DataBind\Serializer\TypeDetector;
 
-use Granule\DataBind\{
-    TypeDeclaration, Helper, Serializer\TypeDetector
-};
+use Granule\DataBind\TypeDeclaration;
+use Granule\DataBind\Helper;
+use Granule\DataBind\Serializer\TypeDetector;
 use ReflectionProperty;
 
 class PropertyDocCommentTypeDetector extends TypeDetector {
@@ -36,7 +36,7 @@ class PropertyDocCommentTypeDetector extends TypeDetector {
             $type = TypeDeclaration::fromSignature($doc);
 
             if (!Helper::isBuiltinType($type->getName()) && !class_exists($type->getName())) {
-                $typeName = $this->resolveObjectType(
+                $typeName = self::resolveObjectType(
                     $type->getName(),
                     $property->getDeclaringClass()->getFileName()
                 );
@@ -63,14 +63,14 @@ class PropertyDocCommentTypeDetector extends TypeDetector {
         return null;
     }
 
-    private function resolveObjectType(string $shortName, string $file): ?string {
+    public static function resolveObjectType(string $shortName, string $file): ?string {
         $tokens = token_get_all(file_get_contents($file));
         $ns = [];
         $nsTokens = false;
         $aliasUsed = false;
         $nsGroupPrefix = [];
 
-        foreach ($tokens as $i => $token) {
+        foreach ($tokens as $token) {
             if (is_array($token)) {
                 if ($token[0] == T_CLASS) {
                     return null;

@@ -30,6 +30,9 @@ use Granule\DataBind\TypeDeclaration;
 use Granule\Util\StrictTypedKey;
 
 trait KeyTypeExtraction {
+    /**
+     * @throws \ReflectionException
+     */
     protected function getKeyType(Type $type): ?TypeDeclaration {
         if ($type->is(StrictTypedKey::class)) {
             /** @var StrictTypedKey $fake */

@@ -25,7 +25,8 @@
 
 namespace Granule\DataBind\Serializer;
 
-use Granule\DataBind\{InvalidDataException, Type};
+use Granule\DataBind\InvalidDataException;
+use Granule\DataBind\Type;
 
 use ReflectionProperty;
 

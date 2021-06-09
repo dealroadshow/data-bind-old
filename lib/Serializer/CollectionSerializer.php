@@ -25,9 +25,11 @@
 
 namespace Granule\DataBind\Serializer;
 
-use Granule\DataBind\{
-    DependencyResolver, DependencyResolverAware, TypeDeclaration, Serializer, Type
-};
+use Granule\DataBind\DependencyResolver;
+use Granule\DataBind\DependencyResolverAware;
+use Granule\DataBind\TypeDeclaration;
+use Granule\DataBind\Serializer;
+use Granule\DataBind\Type;
 use Granule\Util\Collection;
 
 class CollectionSerializer extends Serializer implements DependencyResolverAware {

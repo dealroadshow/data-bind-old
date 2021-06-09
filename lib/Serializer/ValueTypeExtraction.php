@@ -30,6 +30,9 @@ use Granule\DataBind\TypeDeclaration;
 use Granule\Util\StrictTypedValue;
 
 trait ValueTypeExtraction {
+    /**
+     * @throws \ReflectionException
+     */
     protected function getValueType(Type $type): ?TypeDeclaration {
         if ($type->is(StrictTypedValue::class)) {
             /** @var StrictTypedValue $fake */

@@ -25,7 +25,6 @@
 
 namespace Granule\DataBind;
 
-use Granule\Util\{StrictTypedKey, StrictTypedValue};
 use ReflectionClass;
 
 class Type {

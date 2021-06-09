@@ -29,8 +29,7 @@ use Granule\DataBind\TypeDeclaration;
 use ReflectionProperty;
 
 abstract class TypeDetector {
-    /** @var ?Detector */
-    private $next;
+    private ?TypeDetector $next;
 
     public function __construct(TypeDetector $next = null) {
         $this->next = $next;

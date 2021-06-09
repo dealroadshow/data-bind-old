@@ -25,9 +25,11 @@
 
 namespace Granule\DataBind;
 
-use Granule\DataBind\{
-    Extractor\ClassExtractor, Extractor\ClassListExtractor, Extractor\ScalarExtractor, Injector\BasicInjector
-};
+use Exception;
+use Granule\DataBind\Extractor\ClassExtractor;
+use Granule\DataBind\Extractor\ClassListExtractor;
+use Granule\DataBind\Extractor\ScalarExtractor;
+use Granule\DataBind\Injector\BasicInjector;
 
 /** Conversion factory class */
 class Converter {
@@ -51,7 +53,7 @@ class Converter {
     }
 
     public function fromXML(string $xml): Injector {
-        throw new \Exception('Panding implementation');
+        throw new Exception('Panding implementation');
     }
 
     public function fromXMLFile(string $xmlFile): Injector {

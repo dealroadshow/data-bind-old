@@ -25,6 +25,10 @@
 
 namespace Granule\DataBind;
 
+use ReflectionNamedType;
+use ReflectionProperty;
+use ReflectionType;
+
 class TypeDeclaration extends Type {
     /** @var bool */
     private $nullable;
@@ -63,10 +67,20 @@ class TypeDeclaration extends Type {
         );
     }
 
-    public static function fromReflection(\ReflectionType $reflection): TypeDeclaration {
+    public static function fromReflection(ReflectionType $reflection): TypeDeclaration {
         return new self(
             $reflection->getName(),
             $reflection->allowsNull()
+        );
+    }
+
+
+    public static function fromReflectionProperty(ReflectionProperty $reflection): TypeDeclaration {
+        /** @var ReflectionNamedType $type */
+        $type = $reflection->getType();
+        return new self(
+            $type->getName(),
+            $type->allowsNull()
         );
     }
 
