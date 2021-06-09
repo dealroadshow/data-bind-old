@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ef30d0a09fe7de2f55d2a6257c815b8",
+    "content-hash": "5d641c7485a45fcbae1e8446f266a13b",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
-            "version": "dev-FIN-10857-update-php-to7-4",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "5c599574f0c6066e4369212370115f7535387764"
+                "reference": "c00bfb1bb9865c41dcb3dc756c79fcb6c3be441e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/5c599574f0c6066e4369212370115f7535387764",
-                "reference": "5c599574f0c6066e4369212370115f7535387764",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/c00bfb1bb9865c41dcb3dc756c79fcb6c3be441e",
+                "reference": "c00bfb1bb9865c41dcb3dc756c79fcb6c3be441e",
                 "shasum": ""
             },
             "require": {
@@ -56,9 +56,9 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/dealroadshow/util/tree/FIN-10857-update-php-to7-4"
+                "source": "https://github.com/dealroadshow/util/tree/0.4.0"
             },
-            "time": "2021-05-05T18:25:58+00:00"
+            "time": "2021-06-09T14:23:42+00:00"
         }
     ],
     "packages-dev": [
@@ -2156,14 +2156,13 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "dealroadshow/granule-util": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": ">=7.4, <8.0",
-        "ext-yaml": "^2.0"
+        "ext-yaml": "^2.0",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
