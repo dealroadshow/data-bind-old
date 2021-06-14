@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "3f8a8dcb91242cd1330ba00141ad9bcd34e8cbfe"
+                "reference": "f71d1189a713f2efd4a485eef9b01ca1eb0af9b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/3f8a8dcb91242cd1330ba00141ad9bcd34e8cbfe",
-                "reference": "3f8a8dcb91242cd1330ba00141ad9bcd34e8cbfe",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/f71d1189a713f2efd4a485eef9b01ca1eb0af9b7",
+                "reference": "f71d1189a713f2efd4a485eef9b01ca1eb0af9b7",
                 "shasum": ""
             },
             "require": {
@@ -62,7 +62,7 @@
             "support": {
                 "source": "https://github.com/dealroadshow/util/tree/FIN-11104-add-return-static"
             },
-            "time": "2021-06-14T14:18:23+00:00"
+            "time": "2021-06-14T15:06:02+00:00"
         }
     ],
     "packages-dev": [
