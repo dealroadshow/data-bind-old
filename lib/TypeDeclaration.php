@@ -67,7 +67,7 @@ class TypeDeclaration extends Type {
         );
     }
 
-    public static function fromReflection(ReflectionType $reflection): TypeDeclaration {
+    public static function fromReflection(ReflectionNamedType $reflection): TypeDeclaration {
         return new self(
             $reflection->getName(),
             $reflection->allowsNull()

@@ -47,27 +47,32 @@ class CollectionSerializer extends Serializer implements DependencyResolverAware
     }
 
     /**
-     * @param Collection $object
+     * @param Collection $data
+     *
      * @return array
+     * @throws \ReflectionException
      */
-    public function serialize($object) {
-        $data = [];
-        if ($vType = $this->getValueType(TypeDeclaration::fromData($object))) {
+    public function serialize($data): array {
+        $result = [];
+        if ($vType = $this->getValueType(TypeDeclaration::fromData($data))) {
             $serializer = $this->resolver->resolve($vType);
-            foreach ($object->toArray() as $item) {
-                $data[] = $serializer->serialize($item);
+            foreach ($data->toArray() as $item) {
+                $result[] = $serializer->serialize($item);
             }
         } else {
-            foreach ($object->toArray() as $item) {
-                $data[] = $this->resolver->resolve(
+            foreach ($data->toArray() as $item) {
+                $result[] = $this->resolver->resolve(
                     TypeDeclaration::fromData($item)
                 )->serialize($item);
             }
         }
 
-        return $data;
+        return $result;
     }
 
+    /**
+     * @throws \ReflectionException
+     */
     protected function unserializeItem($data, Type $type) {
         if ($vType = $this->getValueType($type)) {
             /** @var Collection\CollectionBuilder $builder */

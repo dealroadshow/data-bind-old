@@ -28,6 +28,7 @@ namespace Granule\DataBind;
 use ReflectionProperty;
 
 final class Helper {
+    /** @psalm-suppress UnusedConstructor */
     private function __construct() {
     }
 
