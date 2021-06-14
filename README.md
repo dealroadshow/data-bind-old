@@ -1,7 +1,21 @@
-# Granule Data Bind Component
+# Static analyzer (psalm)
 
-[![Build Status](https://travis-ci.org/granulephp/data-bind.svg?branch=master)](https://travis-ci.org/granulephp/data-bind)
-[![Latest Stable Version](https://poser.pugx.org/granule/data-bind/v/stable)](https://packagist.org/packages/granule/data-bind)
-[![Latest Unstable Version](https://poser.pugx.org/granule/data-bind/v/unstable)](https://packagist.org/packages/granule/data-bind)
-[![License](https://poser.pugx.org/granule/data-bind/license)](https://packagist.org/packages/granule/data-bind)
-[![composer.lock](https://poser.pugx.org/granule/data-bind/composerlock)](https://packagist.org/packages/granule/data-bind)
+```bash
+# Analyzing the current code, ignoring known errors from baseline.xml
+./vendor/vimeo/psalm/psalm --report=summary.json --use-baseline=baseline.xml --no-cache --no-diff
+
+# Adding new errors to the exception list baseline.xml
+./vendor/vimeo/psalm/psalm --report=summary.json --set-baseline=baseline.xml --no-cache --no-diff
+
+# Removing fixed errors from exception list baseline.xml
+./vendor/vimeo/psalm/psalm --report=summary.json --update-baseline --no-cache --no-diff
+```
+
+# PHPUnit
+
+```bash
+# run phpunit test
+./vendor/bin/phpunit
+
+```
+
