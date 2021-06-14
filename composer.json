@@ -5,7 +5,7 @@
     "require": {
         "php": ">=7.4, <8.0",
         "ext-yaml": "^2.0",
-        "dealroadshow/granule-util": "0.4.0",
+        "dealroadshow/granule-util": "dev-FIN-11104-add-return-static",
         "ext-json": "*",
         "ext-simplexml": "*"
     },
