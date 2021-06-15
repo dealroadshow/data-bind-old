@@ -85,9 +85,6 @@ class MapSerializer extends Serializer implements DependencyResolverAware {
         return $result;
     }
 
-    /**
-     * @throws \ReflectionException
-     */
     protected function unserializeItem($data, Type $type): Map {
         $kSerializer = $vSerializer = null;
 

@@ -50,7 +50,6 @@ class CollectionSerializer extends Serializer implements DependencyResolverAware
      * @param Collection $data
      *
      * @return array
-     * @throws \ReflectionException
      */
     public function serialize($data): array {
         $result = [];
@@ -70,9 +69,6 @@ class CollectionSerializer extends Serializer implements DependencyResolverAware
         return $result;
     }
 
-    /**
-     * @throws \ReflectionException
-     */
     protected function unserializeItem($data, Type $type) {
         if ($vType = $this->getValueType($type)) {
             /** @var Collection\CollectionBuilder $builder */
