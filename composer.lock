@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3c6250de8d8f7f87207989ea554bddb3",
+    "content-hash": "b603902ed56fb3ef83763288af324f5b",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
-            "version": "dev-FIN-11104-add-return-static",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "ab197b8ab81572421b80783448ebbfa5843b96ea"
+                "reference": "de175176a4ab24f4434004934c5556c0495e4cf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/ab197b8ab81572421b80783448ebbfa5843b96ea",
-                "reference": "ab197b8ab81572421b80783448ebbfa5843b96ea",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/de175176a4ab24f4434004934c5556c0495e4cf0",
+                "reference": "de175176a4ab24f4434004934c5556c0495e4cf0",
                 "shasum": ""
             },
             "require": {
@@ -60,9 +60,9 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/dealroadshow/util/tree/FIN-11104-add-return-static"
+                "source": "https://github.com/dealroadshow/util/tree/0.4.1"
             },
-            "time": "2021-06-14T17:59:54+00:00"
+            "time": "2021-06-15T07:13:10+00:00"
         }
     ],
     "packages-dev": [
@@ -3928,9 +3928,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "dealroadshow/granule-util": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
