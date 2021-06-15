@@ -29,10 +29,9 @@ use Granule\DataBind\DependencyResolver;
 use Granule\DataBind\Type;
 
 class ClassListExtractor extends BasicExtractor {
-    /** @var DependencyResolver */
-    private $resolver;
+    private DependencyResolver $resolver;
     /** @var object[] */
-    private $objects;
+    private iterable $objects;
 
     public function __construct(DependencyResolver $resolver, iterable $objects) {
         $this->resolver = $resolver;

@@ -43,8 +43,7 @@ use ReflectionException;
  */
 class ConverterTest extends TestCase {
 
-    /** @var Converter */
-    private static $converter;
+    private static Converter $converter;
 
     public static function setUpBeforeClass(): void {
         $resolver = DependencyResolver::builder()->build();
@@ -88,6 +87,8 @@ class ConverterTest extends TestCase {
      *
      * @param array  $fixture
      * @param string $class
+     * @covers ::fromArray
+     * @covers ::toObject
      */
     public function it_should_unserialize_basic_structure(array $fixture, string $class): void {
         /** @var TestObject $deserealized */
@@ -215,6 +216,9 @@ class ConverterTest extends TestCase {
      * @param mixed    $expected
      *
      * @throws ReflectionException
+     *
+     * @covers ::fromArray
+     * @covers ::toObject
      */
     public function it_should_unserialize_specific_type(
         array $fixture,
@@ -302,6 +306,9 @@ class ConverterTest extends TestCase {
      * @param          $expected
      *
      * @throws ReflectionException
+     *
+     * @covers ::fromArray
+     * @covers ::toObject
      */
     public function it_should_unserialize_list_type(
         array $fixture,
@@ -335,6 +342,11 @@ class ConverterTest extends TestCase {
      *
      * @param array  $fixture
      * @param string $class
+     *
+     * @covers ::fromArray
+     * @covers ::toObject
+     * @covers ::fromObject
+     * @covers ::toSimpleType
      */
     public function it_should_serialize_basic_object(array $fixture, string $class): void {
         /** @var TestObject $deserialized */

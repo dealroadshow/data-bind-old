@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<psalm
+        phpVersion="7.4"
+        errorLevel="3"
+        strictBinaryOperands="true"
+        useDocblockTypes="false"
+        useDocblockPropertyTypes="true"
+        findUnusedVariablesAndParams="true"
+        findUnusedCode="true"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://getpsalm.org/schema/config"
+        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+        errorBaseline="baseline.xml"
+>
+    <projectFiles>
+        <directory name="lib"/>
+        <ignoreFiles>
+            <directory name="vendor"/>
+        </ignoreFiles>
+    </projectFiles>
+    <issueHandlers>
+        <PossiblyUnusedMethod errorLevel="suppress"/>
+        <UnusedClass errorLevel="suppress"/>
+    </issueHandlers>
+    <plugins>
+        <pluginClass class="Orklah\PsalmInsaneComparison\Plugin"/>
+        <pluginClass class="Marartner\PsalmNoEmpty\Plugin"/>
+        <pluginClass class="Orklah\StrictEquality\Plugin"/>
+    </plugins>
+</psalm>

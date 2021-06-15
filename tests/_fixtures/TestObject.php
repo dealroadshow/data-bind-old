@@ -29,7 +29,7 @@ use Granule\Tests\DataBind\_fixtures\SubNs\TestArrayMap as AliasForMap;
 use Granule\Tests\DataBind\_fixtures\SubNs\TestEnum;
 
 class TestObject {
-    /** @var ?string */
+    /** @var string|null */
     private $compatibilityNullableString;
     /** @var null|string */
     private $leftNullableString;
