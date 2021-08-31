@@ -29,8 +29,10 @@ use Granule\DataBind\TypeDeclaration;
 use Granule\DataBind\Serializer\TypeDetector;
 use ReflectionProperty;
 
-class AccessorTypeDetector extends TypeDetector {
-    protected function perform(ReflectionProperty $property): ?TypeDeclaration {
+class AccessorTypeDetector extends TypeDetector
+{
+    protected function perform(ReflectionProperty $property): ?TypeDeclaration
+    {
         $propertyName = $property->getName();
         $getterSuffix = ucfirst($propertyName);
         $reflectionClass = $property->getDeclaringClass();

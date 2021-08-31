@@ -25,11 +25,17 @@
 
 namespace Granule\DataBind;
 
-class InvalidDataException extends DataBindException {
-    public static function fromTypeAndData(Type $type, $data, string $name = null): InvalidDataException {
+class InvalidDataException extends DataBindException
+{
+    public static function fromTypeAndData(Type $type, $data, string $name = null): InvalidDataException
+    {
         $suf = $name ? sprintf(' for "%s"', $name) : '';
 
-        return new self(sprintf('Data of type %s cannot be applied to type %s%s',
-            gettype($data), $type->getDeclaration(), $suf));
+        return new self(sprintf(
+            'Data of type %s cannot be applied to type %s%s',
+            gettype($data),
+            $type->getDeclaration(),
+            $suf
+        ));
     }
 }

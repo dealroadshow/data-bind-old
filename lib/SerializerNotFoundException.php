@@ -25,8 +25,10 @@
 
 namespace Granule\DataBind;
 
-class SerializerNotFoundException extends DataBindException {
-    public static function fromType(Type $type): SerializerNotFoundException {
+class SerializerNotFoundException extends DataBindException
+{
+    public static function fromType(Type $type): SerializerNotFoundException
+    {
         return new self(sprintf('Serializer not found for type: %s', $type->getName()));
     }
 }

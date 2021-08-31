@@ -25,11 +25,12 @@
 
 namespace Granule\DataBind;
 
-interface Extractor {
+interface Extractor
+{
     /** @return mixed */
-    function toSimpleType();
-    function toYamlString(): string;
-    function toYamlFile(string $path): void;
-    function toJsonString(): string;
-    function toJsonFile(string $path): void;
+    public function toSimpleType();
+    public function toYamlString(): string;
+    public function toYamlFile(string $path): void;
+    public function toJsonString(): string;
+    public function toJsonFile(string $path): void;
 }

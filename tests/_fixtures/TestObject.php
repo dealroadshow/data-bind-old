@@ -28,7 +28,8 @@ namespace Granule\Tests\DataBind\_fixtures;
 use Granule\Tests\DataBind\_fixtures\SubNs\TestArrayMap as AliasForMap;
 use Granule\Tests\DataBind\_fixtures\SubNs\TestEnum;
 
-class TestObject {
+class TestObject
+{
     /** @var string|null */
     private $compatibilityNullableString;
     /** @var null|string */
@@ -54,11 +55,13 @@ class TestObject {
     /** @var TestEnum */
     private $question;
 
-    public function getLayer(): TestInternalObject {
+    public function getLayer(): TestInternalObject
+    {
         return $this->layer;
     }
 
-    public function getCollection(): TestCollection {
+    public function getCollection(): TestCollection
+    {
         return $this->collection;
     }
 }

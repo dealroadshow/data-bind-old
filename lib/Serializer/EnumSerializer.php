@@ -29,8 +29,10 @@ use Granule\DataBind\Serializer;
 use Granule\DataBind\Type;
 use Granule\Util\Enum;
 
-class EnumSerializer extends Serializer {
-    public function matches(Type $type): bool {
+class EnumSerializer extends Serializer
+{
+    public function matches(Type $type): bool
+    {
         return $type->is(Enum::class);
     }
 
@@ -38,11 +40,13 @@ class EnumSerializer extends Serializer {
      * @param Enum $data
      * @return string
      */
-    public function serialize($data) {
+    public function serialize($data)
+    {
         return $data->getValue();
     }
 
-    protected function unserializeItem($data, Type $type) {
+    protected function unserializeItem($data, Type $type)
+    {
         return call_user_func([$type->getName(), $data]);
     }
 }

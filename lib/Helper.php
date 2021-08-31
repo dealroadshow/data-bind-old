@@ -27,9 +27,11 @@ namespace Granule\DataBind;
 
 use ReflectionProperty;
 
-final class Helper {
+final class Helper
+{
     /** @psalm-suppress UnusedConstructor */
-    private function __construct() {
+    private function __construct()
+    {
     }
 
     public static function getDocStatement(
@@ -44,7 +46,8 @@ final class Helper {
         return null;
     }
 
-    public static function isBuiltinType(string $type): bool {
+    public static function isBuiltinType(string $type): bool
+    {
         return in_array($type, [
             'bool', 'boolean',
             'int', 'integer',

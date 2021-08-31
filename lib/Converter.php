@@ -32,39 +32,48 @@ use Granule\DataBind\Extractor\ScalarExtractor;
 use Granule\DataBind\Injector\BasicInjector;
 
 /** Conversion factory class */
-class Converter {
+class Converter
+{
     /** @var DependencyResolver */
     private $resolver;
 
-    public function __construct(DependencyResolver $resolver) {
+    public function __construct(DependencyResolver $resolver)
+    {
         $this->resolver = $resolver;
     }
 
-    public function fromArray(array $data): Injector {
+    public function fromArray(array $data): Injector
+    {
         return new BasicInjector($data, $this->resolver);
     }
 
-    public function fromJSON(string $json): Injector {
+    public function fromJSON(string $json): Injector
+    {
         return new BasicInjector(json_decode($json, true), $this->resolver);
     }
 
-    public function fromJSONFile(string $jsonFile): Injector {
+    public function fromJSONFile(string $jsonFile): Injector
+    {
         return self::fromJSON(file_get_contents($jsonFile));
     }
 
-    public function fromXML(string $xml): Injector {
+    public function fromXML(string $xml): Injector
+    {
         throw new Exception('Panding implementation');
     }
 
-    public function fromXMLFile(string $xmlFile): Injector {
+    public function fromXMLFile(string $xmlFile): Injector
+    {
         return self::fromXML(file_get_contents($xmlFile));
     }
 
-    public function fromObject($object): Extractor {
+    public function fromObject($object): Extractor
+    {
         return new ClassExtractor($this->resolver, $object);
     }
 
-    public function fromExtractable($extractable): Extractor {
+    public function fromExtractable($extractable): Extractor
+    {
         if (is_iterable($extractable)) {
             return $this->fromObjectList($extractable);
         } elseif (is_object($extractable)) {
@@ -74,7 +83,8 @@ class Converter {
         }
     }
 
-    public function fromObjectList(iterable $objects): Extractor {
+    public function fromObjectList(iterable $objects): Extractor
+    {
         return new ClassListExtractor($this->resolver, $objects);
     }
 }

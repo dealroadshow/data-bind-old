@@ -27,11 +27,13 @@ namespace Granule\DataBind;
 
 use ReflectionClass;
 
-class Type {
+class Type
+{
     /** @var string */
     private $name;
 
-    protected function __construct(string $name) {
+    protected function __construct(string $name)
+    {
         $this->name = $name;
     }
 
@@ -39,27 +41,33 @@ class Type {
      * @param $data
      * @return Type|TypeDeclaration
      */
-    public static function fromData($data): Type {
+    public static function fromData($data): Type
+    {
         return new static(is_object($data) ? get_class($data) : gettype($data));
     }
 
-    public function getName(): string {
+    public function getName(): string
+    {
         return $this->name;
     }
 
-    public function getDeclaration(): string {
+    public function getDeclaration(): string
+    {
         return $this->getName();
     }
 
-    public function toFullType(): TypeDeclaration {
+    public function toFullType(): TypeDeclaration
+    {
         return TypeDeclaration::fromName($this->getName());
     }
 
-    public function getReflection(): ReflectionClass {
+    public function getReflection(): ReflectionClass
+    {
         return new ReflectionClass($this->getName());
     }
 
-    public function is(string $class): bool {
+    public function is(string $class): bool
+    {
         return is_a($this->getName(), $class, true);
     }
 }

@@ -30,10 +30,11 @@ use Granule\DataBind\Helper;
 use Granule\DataBind\Serializer\TypeDetector;
 use ReflectionProperty;
 
-class PropertyTypeDetector extends TypeDetector {
-    protected function perform(ReflectionProperty $property): ?TypeDeclaration {
+class PropertyTypeDetector extends TypeDetector
+{
+    protected function perform(ReflectionProperty $property): ?TypeDeclaration
+    {
         if ($property->hasType()) {
-
             $type = TypeDeclaration::fromReflectionProperty($property);
 
             if (!Helper::isBuiltinType($type->getName()) && !class_exists($type->getName())) {
@@ -64,5 +65,4 @@ class PropertyTypeDetector extends TypeDetector {
 
         return null;
     }
-
 }

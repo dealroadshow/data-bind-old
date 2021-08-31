@@ -28,19 +28,22 @@ namespace Granule\DataBind\Extractor;
 use Granule\DataBind\DependencyResolver;
 use Granule\DataBind\Type;
 
-class ClassExtractor extends BasicExtractor {
+class ClassExtractor extends BasicExtractor
+{
     /** @var DependencyResolver */
     private $resolver;
     /** @var object */
     private $object;
 
-    public function __construct(DependencyResolver $resolver, $object) {
+    public function __construct(DependencyResolver $resolver, $object)
+    {
         $this->resolver = $resolver;
         $this->object = $object;
     }
 
     /** {@inheritdoc} */
-    public function toSimpleType() {
+    public function toSimpleType()
+    {
         return $this->resolver
             ->resolve(Type::fromData($this->object))
             ->serialize($this->object);

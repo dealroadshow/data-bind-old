@@ -30,8 +30,10 @@ use Granule\DataBind\Helper;
 use Granule\DataBind\Serializer\TypeDetector;
 use ReflectionProperty;
 
-class PropertyDocCommentTypeDetector extends TypeDetector {
-    protected function perform(ReflectionProperty $property): ?TypeDeclaration {
+class PropertyDocCommentTypeDetector extends TypeDetector
+{
+    protected function perform(ReflectionProperty $property): ?TypeDeclaration
+    {
         if ($doc = Helper::getDocStatement($property, 'var')) {
             $type = TypeDeclaration::fromSignature($doc);
 
@@ -63,7 +65,8 @@ class PropertyDocCommentTypeDetector extends TypeDetector {
         return null;
     }
 
-    public static function resolveObjectType(string $shortName, string $file): ?string {
+    public static function resolveObjectType(string $shortName, string $file): ?string
+    {
         $tokens = token_get_all(file_get_contents($file));
         $ns = [];
         $nsTokens = false;
@@ -112,6 +115,4 @@ class PropertyDocCommentTypeDetector extends TypeDetector {
 
         return null;
     }
-
-
 }

@@ -32,17 +32,20 @@ use Granule\DataBind\Serializer;
 use Granule\DataBind\Type;
 use Granule\Util\Collection;
 
-class CollectionSerializer extends Serializer implements DependencyResolverAware {
+class CollectionSerializer extends Serializer implements DependencyResolverAware
+{
     use ValueTypeExtraction;
 
     /** @var DependencyResolver */
     private $resolver;
 
-    public function setResolver(DependencyResolver $resolver): void {
+    public function setResolver(DependencyResolver $resolver): void
+    {
         $this->resolver = $resolver;
     }
 
-    public function matches(Type $type): bool {
+    public function matches(Type $type): bool
+    {
         return $type->is(Collection::class);
     }
 
@@ -51,7 +54,8 @@ class CollectionSerializer extends Serializer implements DependencyResolverAware
      *
      * @return array
      */
-    public function serialize($data): array {
+    public function serialize($data): array
+    {
         $result = [];
         if ($vType = $this->getValueType(TypeDeclaration::fromData($data))) {
             $serializer = $this->resolver->resolve($vType);
@@ -69,7 +73,8 @@ class CollectionSerializer extends Serializer implements DependencyResolverAware
         return $result;
     }
 
-    protected function unserializeItem($data, Type $type) {
+    protected function unserializeItem($data, Type $type)
+    {
         if ($vType = $this->getValueType($type)) {
             /** @var Collection\CollectionBuilder $builder */
             $builder = call_user_func([$type->getName(), 'builder']);

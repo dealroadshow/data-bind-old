@@ -28,14 +28,17 @@ namespace Granule\DataBind\Serializer;
 use Granule\DataBind\TypeDeclaration;
 use ReflectionProperty;
 
-abstract class TypeDetector {
+abstract class TypeDetector
+{
     private ?TypeDetector $next;
 
-    public function __construct(TypeDetector $next = null) {
+    public function __construct(TypeDetector $next = null)
+    {
         $this->next = $next;
     }
 
-    public function detect(ReflectionProperty $property): TypeDeclaration {
+    public function detect(ReflectionProperty $property): TypeDeclaration
+    {
         if ($type = $this->perform($property)) {
             return $type;
         }
@@ -47,7 +50,8 @@ abstract class TypeDetector {
         throw UnknownTypeException::fromReflector($property);
     }
 
-    protected function getNext(): ?TypeDetector {
+    protected function getNext(): ?TypeDetector
+    {
         return $this->next;
     }
 
