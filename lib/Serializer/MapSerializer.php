@@ -34,17 +34,20 @@ use Granule\Util\Map;
 use Granule\Util\StrictTypedKey;
 use Granule\Util\StrictTypedValue;
 
-class MapSerializer extends Serializer implements DependencyResolverAware {
+class MapSerializer extends Serializer implements DependencyResolverAware
+{
     use KeyTypeExtraction;
     use ValueTypeExtraction;
 
     private DependencyResolver $resolver;
 
-    public function setResolver(DependencyResolver $resolver): void {
+    public function setResolver(DependencyResolver $resolver): void
+    {
         $this->resolver = $resolver;
     }
 
-    public function matches(Type $type): bool {
+    public function matches(Type $type): bool
+    {
         return $type->is(Map::class);
     }
 
@@ -53,7 +56,8 @@ class MapSerializer extends Serializer implements DependencyResolverAware {
      *
      * @return array
      */
-    public function serialize($data): array {
+    public function serialize($data): array
+    {
         $result = [];
         $valueSerializer = $keySerializer = null;
         if ($data instanceof StrictTypedValue) {
@@ -85,7 +89,8 @@ class MapSerializer extends Serializer implements DependencyResolverAware {
         return $result;
     }
 
-    protected function unserializeItem($data, Type $type): Map {
+    protected function unserializeItem($data, Type $type): Map
+    {
         $kSerializer = $vSerializer = null;
 
         /** @var Map\MapBuilder $builder */
@@ -105,12 +110,12 @@ class MapSerializer extends Serializer implements DependencyResolverAware {
                     ? $kSerializer->unserialize($k, $kType)
                     : $this->resolver->resolve(
                         TypeDeclaration::fromData($k)
-                )->unserialize($k, TypeDeclaration::fromData($k)),
+                    )->unserialize($k, TypeDeclaration::fromData($k)),
                 $vSerializer
                     ? $vSerializer->unserialize($v, $vType)
                     : $this->resolver->resolve(
                         TypeDeclaration::fromData($v)
-                )->unserialize($v, TypeDeclaration::fromData($v))
+                    )->unserialize($v, TypeDeclaration::fromData($v))
             );
         }
 

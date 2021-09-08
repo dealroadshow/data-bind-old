@@ -29,11 +29,13 @@ use Granule\DataBind\Type;
 use Granule\DataBind\TypeDeclaration;
 use Granule\Util\StrictTypedKey;
 
-trait KeyTypeExtraction {
+trait KeyTypeExtraction
+{
     /**
      * @throws \ReflectionException
      */
-    protected function getKeyType(Type $type): ?TypeDeclaration {
+    protected function getKeyType(Type $type): ?TypeDeclaration
+    {
         if ($type->is(StrictTypedKey::class)) {
             /** @var StrictTypedKey $fake */
             $fake = $type->getReflection()

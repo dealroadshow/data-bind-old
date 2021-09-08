@@ -41,16 +41,18 @@ use ReflectionException;
  * @group integration
  * @coversDefaultClass Converter
  */
-class ConverterTest extends TestCase {
-
+class ConverterTest extends TestCase
+{
     private static Converter $converter;
 
-    public static function setUpBeforeClass(): void {
+    public static function setUpBeforeClass(): void
+    {
         $resolver = DependencyResolver::builder()->build();
         self::$converter = new Converter($resolver);
     }
 
-    public function getFixture(): array {
+    public function getFixture(): array
+    {
         return [
             [
                 [
@@ -90,7 +92,8 @@ class ConverterTest extends TestCase {
      * @covers ::fromArray
      * @covers ::toObject
      */
-    public function it_should_unserialize_basic_structure(array $fixture, string $class): void {
+    public function it_should_unserialize_basic_structure(array $fixture, string $class): void
+    {
         /** @var TestObject $deserealized */
         $deserealized = self::$converter
             ->fromArray($fixture)
@@ -99,7 +102,8 @@ class ConverterTest extends TestCase {
         $this->assertInstanceOf($class, $deserealized);
     }
 
-    public function inlineTypeProvider(): array {
+    public function inlineTypeProvider(): array
+    {
         $fixture = $this->getFixture()[0][0];
 
         return [
@@ -241,7 +245,8 @@ class ConverterTest extends TestCase {
         $this->assertTrue($expected === $cast($value), 'Check value equality');
     }
 
-    public function listTypeProvider(): array {
+    public function listTypeProvider(): array
+    {
         $fixture = $this->getFixture()[0][0];
 
         return [
@@ -348,7 +353,8 @@ class ConverterTest extends TestCase {
      * @covers ::fromObject
      * @covers ::toSimpleType
      */
-    public function it_should_serialize_basic_object(array $fixture, string $class): void {
+    public function it_should_serialize_basic_object(array $fixture, string $class): void
+    {
         /** @var TestObject $deserialized */
         $deserialized = self::$converter
             ->fromArray($fixture)

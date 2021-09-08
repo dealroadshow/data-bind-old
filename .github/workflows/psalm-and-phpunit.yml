@@ -27,4 +27,6 @@ jobs:
         run: ./vendor/vimeo/psalm/psalm --use-baseline=baseline.xml --no-cache --no-diff
       - name: 'Run phpunit test'
         run: ./vendor/bin/phpunit
+      - name: Check code style
+        run: ./vendor/bin/php-cs-fixer fix --dry-run
     timeout-minutes: 5

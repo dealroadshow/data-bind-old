@@ -25,9 +25,10 @@
 
 namespace Granule\DataBind;
 
-interface Injector {
+interface Injector
+{
     /** @return object */
-    function toObject(string $class);
+    public function toObject(string $class);
     /** @return object[] */
-    function toArrayOf(string $class): array;
+    public function toArrayOf(string $class): array;
 }

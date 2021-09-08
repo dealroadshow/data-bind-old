@@ -28,9 +28,12 @@ namespace Granule\DataBind\Serializer;
 use Granule\DataBind\DataBindException;
 use ReflectionProperty;
 
-class UnknownTypeException extends DataBindException {
-    public static function fromReflector(ReflectionProperty $property): UnknownTypeException {
-        return new self(sprintf('Unknown type for %s::%s',
+class UnknownTypeException extends DataBindException
+{
+    public static function fromReflector(ReflectionProperty $property): UnknownTypeException
+    {
+        return new self(sprintf(
+            'Unknown type for %s::%s',
             $property->getDeclaringClass()->getName(),
             $property->getName()
         ));

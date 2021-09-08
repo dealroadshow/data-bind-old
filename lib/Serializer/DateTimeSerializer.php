@@ -31,8 +31,10 @@ use DateTimeInterface;
 use Granule\DataBind\Serializer;
 use Granule\DataBind\Type;
 
-class DateTimeSerializer extends Serializer {
-    public function matches(Type $type): bool {
+class DateTimeSerializer extends Serializer
+{
+    public function matches(Type $type): bool
+    {
         return is_a($type->getName(), DateTimeInterface::class, true);
     }
 
@@ -40,11 +42,13 @@ class DateTimeSerializer extends Serializer {
      * @param DateTimeInterface $data
      * @return string
      */
-    public function serialize($data) {
+    public function serialize($data)
+    {
         return $data->format(DATE_RFC850);
     }
 
-    protected function unserializeItem($data, Type $type) {
+    protected function unserializeItem($data, Type $type)
+    {
         $class = ($type->getName() === DateTimeInterface::class)
             ? DateTimeImmutable::class
             : $type->getName();

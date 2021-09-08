@@ -36,11 +36,13 @@ use Granule\DataBind\Serializer\TypeDetector\AccessorTypeDetector;
 use Granule\DataBind\Serializer\TypeDetector\PropertyDocCommentTypeDetector;
 use Granule\DataBind\Serializer\TypeDetector\PropertyTypeDetector;
 
-class DependencyResolver {
+class DependencyResolver
+{
     /** @var Serializer[] */
     private $serializers = [];
 
-    public function __construct(DependencyResolverBuilder $builder) {
+    public function __construct(DependencyResolverBuilder $builder)
+    {
         $this->serializers = $builder->getSerializers();
 
         foreach ($this->serializers as $serializer) {
@@ -50,11 +52,13 @@ class DependencyResolver {
         }
     }
 
-    public static function emptyBuilder(): DependencyResolverBuilder {
+    public static function emptyBuilder(): DependencyResolverBuilder
+    {
         return new DependencyResolverBuilder();
     }
 
-    public static function builder(): DependencyResolverBuilder {
+    public static function builder(): DependencyResolverBuilder
+    {
         return static::emptyBuilder()
             ->add(new DateTimeSerializer())
             ->add(new PrimitiveTypeSerializer())
@@ -71,7 +75,8 @@ class DependencyResolver {
             ));
     }
 
-    public function resolve(Type $type): Serializer {
+    public function resolve(Type $type): Serializer
+    {
         foreach ($this->serializers as $serializer) {
             if ($serializer->matches($type)) {
                 return $serializer;
