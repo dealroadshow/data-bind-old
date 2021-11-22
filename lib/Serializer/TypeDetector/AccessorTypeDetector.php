@@ -25,15 +25,26 @@
 
 namespace Granule\DataBind\Serializer\TypeDetector;
 
+use Google\Protobuf\Internal\Message;
 use Granule\DataBind\TypeDeclaration;
 use Granule\DataBind\Serializer\TypeDetector;
 use ReflectionProperty;
+use ReflectionClass;
 
 class AccessorTypeDetector extends TypeDetector {
     protected function perform(ReflectionProperty $property): ?TypeDeclaration {
         $propertyName = $property->getName();
         $getterSuffix = ucfirst($propertyName);
         $reflectionClass = $property->getDeclaringClass();
+
+        // Exclude proto Messages getters
+        if ($property->hasType()) {
+            $propertyReflection = new ReflectionClass($property->getType()->getName());
+
+            if ($propertyReflection->isSubclassOf(Message::class)) {
+                return TypeDeclaration::fromReflection($property->getType());
+            }
+        }
 
         foreach ([
             'get'.$getterSuffix,

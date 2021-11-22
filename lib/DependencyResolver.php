@@ -30,6 +30,7 @@ use Granule\DataBind\Serializer\DateTimeSerializer;
 use Granule\DataBind\Serializer\EnumSerializer;
 use Granule\DataBind\Serializer\EnumWordingSerializer;
 use Granule\DataBind\Serializer\MapSerializer;
+use Granule\DataBind\Serializer\MessageSerializer;
 use Granule\DataBind\Serializer\POCOSerializer;
 use Granule\DataBind\Serializer\PrimitiveTypeSerializer;
 use Granule\DataBind\Serializer\TypeDetector\AccessorTypeDetector;
@@ -56,6 +57,7 @@ class DependencyResolver {
 
     public static function builder(): DependencyResolverBuilder {
         return static::emptyBuilder()
+            ->add(new MessageSerializer())
             ->add(new DateTimeSerializer())
             ->add(new PrimitiveTypeSerializer())
             ->add(new CollectionSerializer())
