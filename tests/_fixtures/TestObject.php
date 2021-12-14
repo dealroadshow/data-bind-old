@@ -25,8 +25,11 @@
 
 namespace Granule\Tests\DataBind\_fixtures;
 
-use Granule\Tests\DataBind\_fixtures\SubNs\TestArrayMap as AliasForMap;
+/** DO NOT CHANGE NAMESPACE BLOCK */
+use Granule\Tests\DataBind\_fixtures\SubNs\{TestArrayMap};
+use Granule\Tests\DataBind\_fixtures\SubNs\{TestArrayMap as AliasForMap};
 use Granule\Tests\DataBind\_fixtures\SubNs\TestEnum;
+use Granule\Tests\DataBind\_fixtures\SubNs\TestExternalObject as AliasForObject;
 
 class TestObject
 {
@@ -48,8 +51,12 @@ class TestObject
     private $birthdate;
     /** @var TestInternalObject[] */
     private $collection;
+    /** @var AliasForObject[] */
+    private $collection2;
     /** @var AliasForMap */
     private $map;
+    /** @var TestArrayMap */
+    private $map2;
     /** @var bool */
     protected $somebool;
     /** @var TestEnum */

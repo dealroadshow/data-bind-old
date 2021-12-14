@@ -69,7 +69,15 @@ class ConverterTest extends TestCase
                         ['name' => 'layer 1'],
                         ['name' => 'layer 18']
                     ],
+                    'collection2' => [
+                        ['name' => 'layer 1'],
+                        ['name' => 'layer 18']
+                    ],
                     'map' => [
+                        'l1' => ['name' => 'layer 1'],
+                        'l18' => ['name' => 'layer 18']
+                    ],
+                    'map2' => [
                         'l1' => ['name' => 'layer 1'],
                         'l18' => ['name' => 'layer 18']
                     ],

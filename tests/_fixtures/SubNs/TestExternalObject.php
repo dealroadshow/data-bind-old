@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 Eugene Bogachov
+ * Copyright (c) 2021 Finsight LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,17 +23,15 @@
  * SOFTWARE.
  */
 
-namespace Granule\DataBind;
+namespace Granule\Tests\DataBind\_fixtures\SubNs;
 
-interface Extractor
+class TestExternalObject
 {
-    public function toSimpleType(): mixed;
+    /** @var string */
+    private $name;
 
-    public function toYamlString(): string;
-
-    public function toYamlFile(string $path): void;
-
-    public function toJsonString(): string;
-
-    public function toJsonFile(string $path): void;
+    public function getName(): string
+    {
+        return $this->name;
+    }
 }

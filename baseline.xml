@@ -27,7 +27,6 @@
     <TypeDoesNotContainType occurrences="3">
       <code>$nsGroupPrefix</code>
       <code>$nsGroupPrefix</code>
-      <code>$token === '}' &amp;&amp; $nsTokens &amp;&amp; $nsGroupPrefix</code>
     </TypeDoesNotContainType>
   </file>
 </files>

@@ -4,31 +4,33 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e033cabad8d75aa54aca9f91f858945f",
+    "content-hash": "4251e98e3d67d874aff9027e475976c3",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
-            "version": "0.4.1",
+            "version": "dev-FIN-13060-up-to-php-8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "de175176a4ab24f4434004934c5556c0495e4cf0"
+                "reference": "9b1974dee3bb1e9ce0fa1d1104196d54ac22806b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/de175176a4ab24f4434004934c5556c0495e4cf0",
-                "reference": "de175176a4ab24f4434004934c5556c0495e4cf0",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/9b1974dee3bb1e9ce0fa1d1104196d54ac22806b",
+                "reference": "9b1974dee3bb1e9ce0fa1d1104196d54ac22806b",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1, <8.0"
+                "php": ">=8.0"
             },
             "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.4",
                 "marartner/psalm-no-empty": "^1.1",
-                "orklah/psalm-insane-comparison": "1.0.3",
-                "orklah/psalm-strict-equality": "^0.1.0",
+                "orklah/psalm-insane-comparison": "^1.0",
+                "orklah/psalm-strict-equality": "^2.0",
+                "phpcompatibility/php-compatibility": "^9.3",
                 "phpunit/phpunit": "^9",
-                "vimeo/psalm": "^4.7"
+                "vimeo/psalm": "^4.15"
             },
             "type": "library",
             "autoload": {
@@ -40,6 +42,14 @@
                 "psr-4": {
                     "Granule\\Tests\\Util\\": "tests"
                 }
+            },
+            "scripts": {
+                "post-install-cmd": [
+                    "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
+                ],
+                "post-update-cmd": [
+                    "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
+                ]
             },
             "license": [
                 "MIT"
@@ -60,9 +70,9 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/dealroadshow/util/tree/0.4.1"
+                "source": "https://github.com/dealroadshow/util/tree/FIN-13060-up-to-php-8"
             },
-            "time": "2021-06-15T07:13:10+00:00"
+            "time": "2021-12-14T16:23:20+00:00"
         }
     ],
     "packages-dev": [
@@ -5000,7 +5010,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "dealroadshow/granule-util": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
