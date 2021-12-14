@@ -30,8 +30,7 @@ use Granule\DataBind\Type;
 
 class ClassExtractor extends BasicExtractor
 {
-    /** @var DependencyResolver */
-    private $resolver;
+    private DependencyResolver $resolver;
     /** @var object */
     private $object;
 

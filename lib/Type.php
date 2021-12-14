@@ -26,22 +26,19 @@
 namespace Granule\DataBind;
 
 use ReflectionClass;
+use ReflectionException;
 
 class Type
 {
     /** @var string */
-    private $name;
+    private string $name;
 
     protected function __construct(string $name)
     {
         $this->name = $name;
     }
 
-    /**
-     * @param $data
-     * @return Type|TypeDeclaration
-     */
-    public static function fromData($data): Type
+    public static function fromData($data): static
     {
         return new static(is_object($data) ? get_class($data) : gettype($data));
     }
@@ -61,6 +58,9 @@ class Type
         return TypeDeclaration::fromName($this->getName());
     }
 
+    /**
+     * @throws ReflectionException
+     */
     public function getReflection(): ReflectionClass
     {
         return new ReflectionClass($this->getName());

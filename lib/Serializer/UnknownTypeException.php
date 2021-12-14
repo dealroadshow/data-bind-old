@@ -32,10 +32,12 @@ class UnknownTypeException extends DataBindException
 {
     public static function fromReflector(ReflectionProperty $property): UnknownTypeException
     {
-        return new self(sprintf(
-            'Unknown type for %s::%s',
-            $property->getDeclaringClass()->getName(),
-            $property->getName()
-        ));
+        return new self(
+            sprintf(
+                'Unknown type for %s::%s',
+                $property->getDeclaringClass()->getName(),
+                $property->getName()
+            )
+        );
     }
 }

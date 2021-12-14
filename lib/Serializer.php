@@ -51,11 +51,7 @@ abstract class Serializer
 
     abstract protected function unserializeItem($data, Type $type);
 
-    /**
-     * @param mixed $data
-     * @return mixed
-     */
-    abstract public function serialize($data);
+    abstract public function serialize(mixed $data): mixed;
 
     abstract public function matches(Type $type): bool;
 }

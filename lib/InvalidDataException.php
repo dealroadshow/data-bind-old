@@ -31,11 +31,13 @@ class InvalidDataException extends DataBindException
     {
         $suf = $name ? sprintf(' for "%s"', $name) : '';
 
-        return new self(sprintf(
-            'Data of type %s cannot be applied to type %s%s',
-            gettype($data),
-            $type->getDeclaration(),
-            $suf
-        ));
+        return new self(
+            sprintf(
+                'Data of type %s cannot be applied to type %s%s',
+                gettype($data),
+                $type->getDeclaration(),
+                $suf
+            )
+        );
     }
 }

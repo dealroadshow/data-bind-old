@@ -39,7 +39,7 @@ use Granule\DataBind\Serializer\TypeDetector\PropertyTypeDetector;
 class DependencyResolver
 {
     /** @var Serializer[] */
-    private $serializers = [];
+    private array $serializers = [];
 
     public function __construct(DependencyResolverBuilder $builder)
     {
@@ -66,13 +66,15 @@ class DependencyResolver
             ->add(new MapSerializer())
             ->add(new EnumWordingSerializer())
             ->add(new EnumSerializer())
-            ->addBottom(new POCOSerializer(
-                new PropertyTypeDetector(
-                    new AccessorTypeDetector(
-                        new PropertyDocCommentTypeDetector()
+            ->addBottom(
+                new POCOSerializer(
+                    new PropertyTypeDetector(
+                        new AccessorTypeDetector(
+                            new PropertyDocCommentTypeDetector()
+                        )
                     )
                 )
-            ));
+            );
     }
 
     public function resolve(Type $type): Serializer

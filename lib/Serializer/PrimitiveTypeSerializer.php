@@ -33,8 +33,7 @@ use Granule\DataBind\Helper;
 
 class PrimitiveTypeSerializer extends Serializer implements DependencyResolverAware
 {
-    /** @var DependencyResolver */
-    private $resolver;
+    private DependencyResolver $resolver;
 
     public function setResolver(DependencyResolver $resolver): void
     {
@@ -46,7 +45,7 @@ class PrimitiveTypeSerializer extends Serializer implements DependencyResolverAw
         return Helper::isBuiltinType($type->getName());
     }
 
-    public function serialize($data)
+    public function serialize(mixed $data): mixed
     {
         if (is_iterable($data)) {
             $response = [];
@@ -61,20 +60,20 @@ class PrimitiveTypeSerializer extends Serializer implements DependencyResolverAw
         return $data;
     }
 
-    public function unserializeItem($data, Type $type)
+    public function unserializeItem($data, Type $type): float|array|bool|int|string
     {
-        $type = $type->getName();
-        if (in_array($type, ['bool', 'boolean']) && !is_bool($data)) {
+        $typeName = $type->getName();
+        if (in_array($typeName, ['bool', 'boolean']) && !is_bool($data)) {
             return (bool) $data;
-        } elseif ($type === 'string' && !is_string($data)) {
+        } elseif ($typeName === 'string' && !is_string($data)) {
             return (string) $data;
-        } elseif (in_array($type, ['integer', 'int']) && !is_integer($data)) {
+        } elseif (in_array($typeName, ['integer', 'int']) && !is_integer($data)) {
             return (int) $data;
-        } elseif (in_array($type, ['float', 'double']) && !is_float($data)) {
+        } elseif (in_array($typeName, ['float', 'double']) && !is_float($data)) {
             return (float) $data;
-        } elseif ($type == 'iterable' && !is_iterable($data)) {
+        } elseif ($typeName === 'iterable' && !is_iterable($data)) {
             return (array) $data;
-        } elseif ($type == 'array' && !is_array($data)) {
+        } elseif ($typeName === 'array' && !is_array($data)) {
             return (array) $data;
         }
 

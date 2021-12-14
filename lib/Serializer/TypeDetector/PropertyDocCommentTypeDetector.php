@@ -45,9 +45,9 @@ class PropertyDocCommentTypeDetector extends TypeDetector
 
                 if (!$typeName || !class_exists($typeName)) {
                     $sameNsTypeName = $property
-                            ->getDeclaringClass()
-                            ->getNamespaceName()
-                        .'\\'.$type->getName();
+                                          ->getDeclaringClass()
+                                          ->getNamespaceName()
+                                      .'\\'.$type->getName();
 
                     if (class_exists($sameNsTypeName)) {
                         return $type->withName($sameNsTypeName);
@@ -75,36 +75,36 @@ class PropertyDocCommentTypeDetector extends TypeDetector
 
         foreach ($tokens as $token) {
             if (is_array($token)) {
-                if ($token[0] == T_CLASS) {
+                if ($token[0] === T_CLASS) {
                     return null;
-                } elseif ($token[0] == T_USE) {
+                } elseif ($token[0] === T_USE) {
                     $nsTokens = true;
-                } elseif ($token[0] == T_STRING && $nsTokens) {
-                    if ($aliasUsed && $ns && $token[1] == $shortName) {
+                } elseif ($token[0] === T_STRING && $nsTokens) {
+                    if ($aliasUsed && $ns && $token[1] === $shortName) {
                         return implode('', $ns);
                     }
 
                     $ns[] = $token[1];
-                } elseif ($token[0] == T_NS_SEPARATOR && $nsTokens) {
+                } elseif ($token[0] === T_NS_SEPARATOR && $nsTokens) {
                     $ns[] = $token[1];
-                } elseif ($token[0] == T_AS && $nsTokens) {
+                } elseif ($token[0] === T_AS && $nsTokens) {
                     $aliasUsed = true;
                 }
-            } elseif ($token == ';' && $nsTokens) {
+            } elseif ($token === ';' && $nsTokens) {
                 $nsTokens = false;
 
-                if ($ns && end($ns) == $shortName) {
+                if ($ns && end($ns) === $shortName) {
                     return implode('', $ns);
                 }
 
                 $aliasUsed = false;
                 $ns = [];
-            } elseif ($token == '{' && $nsTokens) {
+            } elseif ($token === '{' && $nsTokens) {
                 $nsGroupPrefix = $ns;
-            } elseif ($token == '}' && $nsTokens && $nsGroupPrefix) {
+            } elseif ($token === '}' && $nsTokens && $nsGroupPrefix) {
                 $nsGroupPrefix = [];
-            } elseif ($token == ',' && $nsTokens && $nsGroupPrefix) {
-                if ($ns && end($ns) == $shortName) {
+            } elseif ($token === ',' && $nsTokens && $nsGroupPrefix) {
+                if ($ns && end($ns) === $shortName) {
                     return implode('', $ns);
                 }
 

@@ -51,12 +51,7 @@ class MapSerializer extends Serializer implements DependencyResolverAware
         return $type->is(Map::class);
     }
 
-    /**
-     * @param object $data
-     *
-     * @return array
-     */
-    public function serialize($data): array
+    public function serialize(mixed $data): array
     {
         $result = [];
         $valueSerializer = $keySerializer = null;
@@ -72,14 +67,11 @@ class MapSerializer extends Serializer implements DependencyResolverAware
         }
 
         foreach ($data as $k => $v) {
-            $result[
-                $keySerializer
-                    ? $keySerializer->serialize($k)
-                    : $this->resolver->resolve(
-                        TypeDeclaration::fromData($k)
-                    )->serialize($k)
-
-            ] = $valueSerializer
+            $result[$keySerializer
+                ? $keySerializer->serialize($k)
+                : $this->resolver->resolve(
+                    TypeDeclaration::fromData($k)
+                )->serialize($k)] = $valueSerializer
                 ? $valueSerializer->serialize($v)
                 : $this->resolver->resolve(
                     TypeDeclaration::fromData($v)
@@ -106,16 +98,12 @@ class MapSerializer extends Serializer implements DependencyResolverAware
 
         foreach ($data as $k => $v) {
             $builder->add(
-                $kSerializer
-                    ? $kSerializer->unserialize($k, $kType)
-                    : $this->resolver->resolve(
-                        TypeDeclaration::fromData($k)
-                    )->unserialize($k, TypeDeclaration::fromData($k)),
-                $vSerializer
-                    ? $vSerializer->unserialize($v, $vType)
-                    : $this->resolver->resolve(
-                        TypeDeclaration::fromData($v)
-                    )->unserialize($v, TypeDeclaration::fromData($v))
+                $kSerializer && $kType ? $kSerializer->unserialize($k, $kType) : $this->resolver->resolve(
+                    TypeDeclaration::fromData($k)
+                )->unserialize($k, TypeDeclaration::fromData($k)),
+                $vSerializer && $vType ? $vSerializer->unserialize($v, $vType) : $this->resolver->resolve(
+                    TypeDeclaration::fromData($v)
+                )->unserialize($v, TypeDeclaration::fromData($v))
             );
         }
 

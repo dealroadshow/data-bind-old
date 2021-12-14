@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.7.3@38c452ae584467e939d55377aaf83b5a26f19dd1">
+<files psalm-version="v4.15.0@a1b5e489e6fcebe40cb804793d964e99fc347820">
   <file src="lib/Converter.php">
     <InvalidReturnType occurrences="1">
       <code>Extractor</code>
@@ -15,26 +15,6 @@
       <code>$objects</code>
     </InvalidPropertyAssignmentValue>
   </file>
-  <file src="lib/Serializer.php">
-    <NullableReturnStatement occurrences="1">
-      <code>$response</code>
-    </NullableReturnStatement>
-  </file>
-  <file src="lib/Serializer/MapSerializer.php">
-    <ArgumentTypeCoercion occurrences="2">
-      <code>TypeDeclaration::fromData($k)</code>
-      <code>TypeDeclaration::fromData($v)</code>
-    </ArgumentTypeCoercion>
-    <PossiblyNullArgument occurrences="2">
-      <code>$kType</code>
-      <code>$vType</code>
-    </PossiblyNullArgument>
-  </file>
-  <file src="lib/Serializer/TypeDetector.php">
-    <PossiblyNullReference occurrences="1">
-      <code>detect</code>
-    </PossiblyNullReference>
-  </file>
   <file src="lib/Serializer/TypeDetector/AccessorTypeDetector.php">
     <ArgumentTypeCoercion occurrences="1">
       <code>$getter-&gt;getReturnType()</code>
@@ -44,8 +24,10 @@
     </PossiblyNullArgument>
   </file>
   <file src="lib/Serializer/TypeDetector/PropertyDocCommentTypeDetector.php">
-    <TypeDoesNotContainType occurrences="1">
-      <code>$token == '}' &amp;&amp; $nsTokens &amp;&amp; $nsGroupPrefix</code>
+    <TypeDoesNotContainType occurrences="3">
+      <code>$nsGroupPrefix</code>
+      <code>$nsGroupPrefix</code>
+      <code>$token === '}' &amp;&amp; $nsTokens &amp;&amp; $nsGroupPrefix</code>
     </TypeDoesNotContainType>
   </file>
 </files>

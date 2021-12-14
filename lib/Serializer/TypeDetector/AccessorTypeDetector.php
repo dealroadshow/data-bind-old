@@ -37,11 +37,13 @@ class AccessorTypeDetector extends TypeDetector
         $getterSuffix = ucfirst($propertyName);
         $reflectionClass = $property->getDeclaringClass();
 
-        foreach ([
-            'get'.$getterSuffix,
-            'is'.$getterSuffix,
-            $getterSuffix
-        ] as $getterName) {
+        foreach (
+            [
+                'get'.$getterSuffix,
+                'is'.$getterSuffix,
+                $getterSuffix
+            ] as $getterName
+        ) {
             if ($reflectionClass->hasMethod($getterName)) {
                 $getter = $reflectionClass->getMethod($getterName);
                 if ($getter->hasReturnType()) {

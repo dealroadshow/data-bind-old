@@ -49,11 +49,15 @@ final class Helper
     public static function isBuiltinType(string $type): bool
     {
         return in_array($type, [
-            'bool', 'boolean',
-            'int', 'integer',
-            'float', 'double',
+            'bool',
+            'boolean',
+            'int',
+            'integer',
+            'float',
+            'double',
             'string',
-            'array', 'iterable'
+            'array',
+            'iterable'
         ]);
     }
 }
