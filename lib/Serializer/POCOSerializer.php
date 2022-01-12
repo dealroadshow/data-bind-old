@@ -25,6 +25,7 @@
 
 namespace Granule\DataBind\Serializer;
 
+use Google\Protobuf\Internal\Message;
 use Granule\DataBind\DependencyResolver;
 use Granule\DataBind\DependencyResolverAware;
 use Granule\DataBind\InvalidDataException;
@@ -57,7 +58,7 @@ class POCOSerializer extends Serializer implements DependencyResolverAware {
     }
 
     public function matches(Type $type): bool {
-        return class_exists($type->getName());
+        return class_exists($type->getName()) && !$type->is(Message::class);
     }
 
     public function serialize($data): array {
