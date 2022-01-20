@@ -3,18 +3,10 @@
 namespace Granule\DataBind\Serializer;
 
 use Google\Protobuf\Internal\Message;
-use Granule\DataBind\DependencyResolver;
-use Granule\DataBind\DependencyResolverAware;
 use Granule\DataBind\Serializer;
 use Granule\DataBind\Type;
 
-class MessageSerializer extends Serializer implements DependencyResolverAware {
-    private DependencyResolver $resolver;
-
-    public function setResolver(DependencyResolver $resolver): void {
-        $this->resolver = $resolver;
-    }
-
+class MessageSerializer extends Serializer {
     public function matches(Type $type): bool {
         return $type->is(Message::class);
     }
