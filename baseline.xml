@@ -39,10 +39,12 @@
       <code>$getter-&gt;getReturnType()</code>
       <code>$property-&gt;getType()</code>
     </PossiblyNullArgument>
-    <PossiblyNullReference occurrences="1">
+    <PossiblyNullReference occurrences="2">
+      <code>getName</code>
       <code>getName</code>
     </PossiblyNullReference>
-    <UndefinedMethod occurrences="1">
+    <UndefinedMethod occurrences="2">
+      <code>getName</code>
       <code>getName</code>
     </UndefinedMethod>
   </file>

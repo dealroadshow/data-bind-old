@@ -40,7 +40,7 @@ class AccessorTypeDetector extends TypeDetector
         $reflectionClass = $property->getDeclaringClass();
 
         // Exclude proto Messages getters
-        if ($property->hasType()) {
+        if ($property->hasType() && class_exists($property->getType()->getName())) {
             $propertyReflection = new ReflectionClass($property->getType()->getName());
 
             if ($propertyReflection->isSubclassOf(Message::class)) {
