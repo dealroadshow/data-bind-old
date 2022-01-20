@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Granule\DataBind\Serializer;
 
@@ -6,8 +8,10 @@ use Google\Protobuf\Internal\Message;
 use Granule\DataBind\Serializer;
 use Granule\DataBind\Type;
 
-class MessageSerializer extends Serializer {
-    public function matches(Type $type): bool {
+class MessageSerializer extends Serializer
+{
+    public function matches(Type $type): bool
+    {
         return $type->is(Message::class);
     }
 
@@ -16,14 +20,16 @@ class MessageSerializer extends Serializer {
      *
      * @return string
      */
-    public function serialize($data) {
+    public function serialize($data)
+    {
         return json_decode($data->serializeToJsonString(), false, 512, JSON_THROW_ON_ERROR);
     }
 
-    public function unserializeItem($data, Type $type) {
+    public function unserializeItem($data, Type $type)
+    {
         /** @var Message $message */
         $class = $type->getName();
-        $message = new $class;
+        $message = new $class();
 
         $message->mergeFromJsonString(json_encode($data, JSON_UNESCAPED_UNICODE));
 
