@@ -29,11 +29,13 @@ use Granule\DataBind\Type;
 use Granule\DataBind\TypeDeclaration;
 use Granule\Util\StrictTypedValue;
 
-trait ValueTypeExtraction {
+trait ValueTypeExtraction
+{
     /**
      * @throws \ReflectionException
      */
-    protected function getValueType(Type $type): ?TypeDeclaration {
+    protected function getValueType(Type $type): ?TypeDeclaration
+    {
         if ($type->is(StrictTypedValue::class)) {
             /** @var StrictTypedValue $fake */
             $fake = $type->getReflection()

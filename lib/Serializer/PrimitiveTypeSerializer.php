@@ -31,19 +31,23 @@ use Granule\DataBind\Serializer;
 use Granule\DataBind\Type;
 use Granule\DataBind\Helper;
 
-class PrimitiveTypeSerializer extends Serializer implements DependencyResolverAware {
+class PrimitiveTypeSerializer extends Serializer implements DependencyResolverAware
+{
     /** @var DependencyResolver */
     private $resolver;
 
-    public function setResolver(DependencyResolver $resolver): void {
+    public function setResolver(DependencyResolver $resolver): void
+    {
         $this->resolver = $resolver;
     }
 
-    public function matches(Type $type): bool {
+    public function matches(Type $type): bool
+    {
         return Helper::isBuiltinType($type->getName());
     }
 
-    public function serialize($data) {
+    public function serialize($data)
+    {
         if (is_iterable($data)) {
             $response = [];
             foreach ($data as $k => $v) {
@@ -57,7 +61,8 @@ class PrimitiveTypeSerializer extends Serializer implements DependencyResolverAw
         return $data;
     }
 
-    public function unserializeItem($data, Type $type) {
+    public function unserializeItem($data, Type $type)
+    {
         $type = $type->getName();
         if (in_array($type, ['bool', 'boolean']) && !is_bool($data)) {
             return (bool) $data;

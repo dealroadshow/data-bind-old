@@ -25,11 +25,13 @@
 
 namespace Granule\DataBind\Extractor;
 
-class ScalarExtractor extends BasicExtractor {
+class ScalarExtractor extends BasicExtractor
+{
     /** @var int|float|string|bool */
     private $value;
 
-    public function __construct($value) {
+    public function __construct($value)
+    {
         if (!is_scalar($value)) {
             throw new \InvalidArgumentException(
                 sprintf('Data of type %s is not of scalar type', gettype($value))
@@ -40,7 +42,8 @@ class ScalarExtractor extends BasicExtractor {
     }
 
 
-    public function toSimpleType() {
+    public function toSimpleType()
+    {
         return $this->value;
     }
 }

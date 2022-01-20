@@ -29,7 +29,8 @@ use ReflectionNamedType;
 use ReflectionProperty;
 use ReflectionType;
 
-class TypeDeclaration extends Type {
+class TypeDeclaration extends Type
+{
     /** @var bool */
     private $nullable;
     /** @var bool */
@@ -45,7 +46,8 @@ class TypeDeclaration extends Type {
         $this->inArray = $inArray;
     }
 
-    public static function fromSignature(string $signature): TypeDeclaration {
+    public static function fromSignature(string $signature): TypeDeclaration
+    {
         $compatibilityNullable = substr($signature, 0, 1) === '?';
         $leftNullable = substr($signature, 0, 5) === 'null|';
         $rightNullable = substr($signature, -5) === '|null';
@@ -67,7 +69,8 @@ class TypeDeclaration extends Type {
         );
     }
 
-    public static function fromReflection(ReflectionType $reflection): TypeDeclaration {
+    public static function fromReflection(ReflectionNamedType $reflection): TypeDeclaration
+    {
         return new self(
             $reflection->getName(),
             $reflection->allowsNull()
@@ -75,7 +78,8 @@ class TypeDeclaration extends Type {
     }
 
 
-    public static function fromReflectionProperty(ReflectionProperty $reflection): TypeDeclaration {
+    public static function fromReflectionProperty(ReflectionProperty $reflection): TypeDeclaration
+    {
         /** @var ReflectionNamedType $type */
         $type = $reflection->getType();
         return new self(
@@ -84,26 +88,32 @@ class TypeDeclaration extends Type {
         );
     }
 
-    public static function fromName(string $name): TypeDeclaration {
+    public static function fromName(string $name): TypeDeclaration
+    {
         return new self($name);
     }
 
-    public function withName(string $newName): TypeDeclaration {
-        return new self($newName,
+    public function withName(string $newName): TypeDeclaration
+    {
+        return new self(
+            $newName,
             $this->isNullable(),
             $this->isInArray()
         );
     }
 
-    public function isNullable(): bool {
+    public function isNullable(): bool
+    {
         return $this->nullable;
     }
 
-    public function isInArray(): bool {
+    public function isInArray(): bool
+    {
         return $this->inArray;
     }
 
-    public function getDeclaration(): string {
+    public function getDeclaration(): string
+    {
         $signature = $this->getName();
         if ($this->isInArray()) {
             $signature = sprintf('%s[]', $signature);

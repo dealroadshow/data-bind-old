@@ -29,18 +29,21 @@ use Granule\DataBind\DependencyResolver;
 use Granule\DataBind\TypeDeclaration;
 use Granule\DataBind\Injector;
 
-class BasicInjector implements Injector {
+class BasicInjector implements Injector
+{
     /** @var mixed */
     private $srcData;
     /** @var DependencyResolver */
     private $resolver;
 
-    public function __construct($srcData, DependencyResolver $resolver) {
+    public function __construct($srcData, DependencyResolver $resolver)
+    {
         $this->srcData = $srcData;
         $this->resolver = $resolver;
     }
 
-    public function toObject(string $class) {
+    public function toObject(string $class)
+    {
         $type = TypeDeclaration::fromName($class);
 
         return $this->resolver
@@ -48,7 +51,8 @@ class BasicInjector implements Injector {
             ->unserialize($this->srcData, $type);
     }
 
-    public function toArrayOf(string $class): array {
+    public function toArrayOf(string $class): array
+    {
         $type = TypeDeclaration::fromName($class);
         $list = [];
         $serializer = $this->resolver->resolve($type);

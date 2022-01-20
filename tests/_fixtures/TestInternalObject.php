@@ -25,11 +25,13 @@
 
 namespace Granule\Tests\DataBind\_fixtures;
 
-class TestInternalObject {
+class TestInternalObject
+{
     /** @var string */
     private $name;
 
-    public function getName(): string {
+    public function getName(): string
+    {
         return $this->name;
     }
 }

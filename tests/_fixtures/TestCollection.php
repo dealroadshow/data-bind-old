@@ -28,8 +28,10 @@ namespace Granule\Tests\DataBind\_fixtures;
 use Granule\Util\Collection\ArrayCollection;
 use Granule\Util\StrictTypedValue;
 
-class TestCollection extends ArrayCollection implements StrictTypedValue {
-    public function getValueType(): string {
+class TestCollection extends ArrayCollection implements StrictTypedValue
+{
+    public function getValueType(): string
+    {
         return TestInternalObject::class;
     }
 }

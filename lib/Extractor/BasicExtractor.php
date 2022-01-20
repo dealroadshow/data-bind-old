@@ -28,24 +28,30 @@ namespace Granule\DataBind\Extractor;
 use Granule\DataBind\Extractor;
 use Granule\DataBind\XMLHelper;
 
-abstract class BasicExtractor implements Extractor {
-    public function toYamlString(): string {
+abstract class BasicExtractor implements Extractor
+{
+    public function toYamlString(): string
+    {
         return yaml_emit($this->toSimpleType());
     }
 
-    public function toYamlFile(string $path): void {
+    public function toYamlFile(string $path): void
+    {
         file_put_contents($path, $this->toYamlString());
     }
 
-    public function toJsonString(): string {
+    public function toJsonString(): string
+    {
         return json_encode($this->toSimpleType());
     }
 
-    public function toJsonFile(string $path): void {
+    public function toJsonFile(string $path): void
+    {
         file_put_contents($path, $this->toJsonString());
     }
 
-    public function toXml(): string {
+    public function toXml(): string
+    {
 //        $xml = new \SimpleXMLElement('<root/>');
 //        $xml->registerXPathNamespace();
         $data = $this->toSimpleType();

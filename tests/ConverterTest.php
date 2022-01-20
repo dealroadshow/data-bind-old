@@ -41,17 +41,18 @@ use ReflectionException;
  * @group integration
  * @coversDefaultClass Converter
  */
-class ConverterTest extends TestCase {
+class ConverterTest extends TestCase
+{
+    private static Converter $converter;
 
-    /** @var Converter */
-    private static $converter;
-
-    public static function setUpBeforeClass(): void {
+    public static function setUpBeforeClass(): void
+    {
         $resolver = DependencyResolver::builder()->build();
         self::$converter = new Converter($resolver);
     }
 
-    public function getFixture(): array {
+    public function getFixture(): array
+    {
         return [
             [
                 [
@@ -88,8 +89,11 @@ class ConverterTest extends TestCase {
      *
      * @param array  $fixture
      * @param string $class
+     * @covers ::fromArray
+     * @covers ::toObject
      */
-    public function it_should_unserialize_basic_structure(array $fixture, string $class): void {
+    public function it_should_unserialize_basic_structure(array $fixture, string $class): void
+    {
         /** @var TestObject $deserealized */
         $deserealized = self::$converter
             ->fromArray($fixture)
@@ -98,7 +102,8 @@ class ConverterTest extends TestCase {
         $this->assertInstanceOf($class, $deserealized);
     }
 
-    public function inlineTypeProvider(): array {
+    public function inlineTypeProvider(): array
+    {
         $fixture = $this->getFixture()[0][0];
 
         return [
@@ -215,6 +220,9 @@ class ConverterTest extends TestCase {
      * @param mixed    $expected
      *
      * @throws ReflectionException
+     *
+     * @covers ::fromArray
+     * @covers ::toObject
      */
     public function it_should_unserialize_specific_type(
         array $fixture,
@@ -237,7 +245,8 @@ class ConverterTest extends TestCase {
         $this->assertTrue($expected === $cast($value), 'Check value equality');
     }
 
-    public function listTypeProvider(): array {
+    public function listTypeProvider(): array
+    {
         $fixture = $this->getFixture()[0][0];
 
         return [
@@ -302,6 +311,9 @@ class ConverterTest extends TestCase {
      * @param          $expected
      *
      * @throws ReflectionException
+     *
+     * @covers ::fromArray
+     * @covers ::toObject
      */
     public function it_should_unserialize_list_type(
         array $fixture,
@@ -335,8 +347,14 @@ class ConverterTest extends TestCase {
      *
      * @param array  $fixture
      * @param string $class
+     *
+     * @covers ::fromArray
+     * @covers ::toObject
+     * @covers ::fromObject
+     * @covers ::toSimpleType
      */
-    public function it_should_serialize_basic_object(array $fixture, string $class): void {
+    public function it_should_serialize_basic_object(array $fixture, string $class): void
+    {
         /** @var TestObject $deserialized */
         $deserialized = self::$converter
             ->fromArray($fixture)

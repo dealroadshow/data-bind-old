@@ -25,8 +25,10 @@
 
 namespace Granule\DataBind;
 
-abstract class Serializer {
-    public function unserialize($data, TypeDeclaration $type) {
+abstract class Serializer
+{
+    public function unserialize($data, TypeDeclaration $type)
+    {
         $response = null;
         if ($type->isInArray()) {
             if (!is_iterable($data)) {

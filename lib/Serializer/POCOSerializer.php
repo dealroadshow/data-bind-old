@@ -37,7 +37,8 @@ use ReflectionProperty;
 /**
  * Plain Old Control Object serializer
  */
-class POCOSerializer extends Serializer implements DependencyResolverAware {
+class POCOSerializer extends Serializer implements DependencyResolverAware
+{
     /** @var TypeDetector */
     private $typeDetector;
     /** @var DependencyResolver */
@@ -47,21 +48,25 @@ class POCOSerializer extends Serializer implements DependencyResolverAware {
     /** @var array */
     private $extendableClasses;
 
-    public function setResolver(DependencyResolver $resolver): void {
+    public function setResolver(DependencyResolver $resolver): void
+    {
         $this->resolver = $resolver;
     }
 
-    public function __construct(TypeDetector $typeDetector, $skipNull = false, $extendableClasses = []) {
+    public function __construct(TypeDetector $typeDetector, $skipNull = false, $extendableClasses = [])
+    {
         $this->typeDetector = $typeDetector;
         $this->skipNull = $skipNull;
         $this->extendableClasses = $extendableClasses;
     }
 
-    public function matches(Type $type): bool {
+    public function matches(Type $type): bool
+    {
         return class_exists($type->getName()) && !$type->is(Message::class);
     }
 
-    public function serialize($data): array {
+    public function serialize($data): array
+    {
         $response = [];
         foreach ($this->extractProperties($data) as $reflectionProperty) {
             if (!$reflectionProperty->isPublic()) {
@@ -83,7 +88,8 @@ class POCOSerializer extends Serializer implements DependencyResolverAware {
         return $response;
     }
 
-    private function isExtendableClass($data): bool {
+    private function isExtendableClass($data): bool
+    {
         foreach ($this->extendableClasses as $extendableClass) {
             if (is_a($data, $extendableClass)) {
                 return true;
@@ -98,7 +104,8 @@ class POCOSerializer extends Serializer implements DependencyResolverAware {
      *
      * @return ReflectionProperty[]
      */
-    private function extractProperties($data): array {
+    private function extractProperties($data): array
+    {
         if ($this->isExtendableClass($data)) {
             return $this->getAllProperties($data);
         }
@@ -106,7 +113,8 @@ class POCOSerializer extends Serializer implements DependencyResolverAware {
         return (new ReflectionClass($data))->getProperties();
     }
 
-    private function getAllProperties($data): array {
+    private function getAllProperties($data): array
+    {
         $properties = [];
 
         $reflectionClass = new ReflectionClass($data);
@@ -125,7 +133,8 @@ class POCOSerializer extends Serializer implements DependencyResolverAware {
     /**
      * @throws \ReflectionException
      */
-    protected function unserializeItem($data, Type $type) {
+    protected function unserializeItem($data, Type $type)
+    {
         $class = new ReflectionClass($type->getName());
         $object = $class->newInstanceWithoutConstructor();
 

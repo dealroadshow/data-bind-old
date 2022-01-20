@@ -25,6 +25,7 @@
 
 namespace Granule\DataBind;
 
-interface DependencyResolverAware {
-    function setResolver(DependencyResolver $resolver): void;
+interface DependencyResolverAware
+{
+    public function setResolver(DependencyResolver $resolver): void;
 }

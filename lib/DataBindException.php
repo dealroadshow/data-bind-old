@@ -27,5 +27,6 @@ namespace Granule\DataBind;
 
 use RuntimeException;
 
-abstract class DataBindException extends RuntimeException {
+abstract class DataBindException extends RuntimeException
+{
 }

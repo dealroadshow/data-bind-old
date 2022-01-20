@@ -29,8 +29,10 @@ use Granule\Tests\DataBind\_fixtures\TestInternalObject;
 use Granule\Util\Map\ArrayMap;
 use Granule\Util\StrictTypedValue;
 
-class TestArrayMap extends ArrayMap implements StrictTypedValue {
-    public function getValueType(): string {
+class TestArrayMap extends ArrayMap implements StrictTypedValue
+{
+    public function getValueType(): string
+    {
         return TestInternalObject::class;
     }
 }

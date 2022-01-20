@@ -34,41 +34,45 @@ use Granule\Util\Map;
 use Granule\Util\StrictTypedKey;
 use Granule\Util\StrictTypedValue;
 
-class MapSerializer extends Serializer implements DependencyResolverAware {
+class MapSerializer extends Serializer implements DependencyResolverAware
+{
     use KeyTypeExtraction;
     use ValueTypeExtraction;
 
-    /** @var DependencyResolver */
-    private $resolver;
+    private DependencyResolver $resolver;
 
-    public function setResolver(DependencyResolver $resolver): void {
+    public function setResolver(DependencyResolver $resolver): void
+    {
         $this->resolver = $resolver;
     }
 
-    public function matches(Type $type): bool {
+    public function matches(Type $type): bool
+    {
         return $type->is(Map::class);
     }
 
     /**
-     * @param object $object
+     * @param object $data
+     *
      * @return array
      */
-    public function serialize($object) {
-        $data = [];
+    public function serialize($data): array
+    {
+        $result = [];
         $valueSerializer = $keySerializer = null;
-        if ($object instanceof StrictTypedValue) {
+        if ($data instanceof StrictTypedValue) {
             $valueSerializer = $this->resolver->resolve(
-                TypeDeclaration::fromName($object->getValueType())
+                TypeDeclaration::fromName($data->getValueType())
             );
         }
-        if ($object instanceof StrictTypedKey) {
+        if ($data instanceof StrictTypedKey) {
             $keySerializer = $this->resolver->resolve(
-                TypeDeclaration::fromName($object->getKeyType())
+                TypeDeclaration::fromName($data->getKeyType())
             );
         }
 
-        foreach ($object as $k => $v) {
-            $data[
+        foreach ($data as $k => $v) {
+            $result[
                 $keySerializer
                     ? $keySerializer->serialize($k)
                     : $this->resolver->resolve(
@@ -82,10 +86,11 @@ class MapSerializer extends Serializer implements DependencyResolverAware {
                 )->serialize($v);
         }
 
-        return $data;
+        return $result;
     }
 
-    protected function unserializeItem($data, Type $type) {
+    protected function unserializeItem($data, Type $type): Map
+    {
         $kSerializer = $vSerializer = null;
 
         /** @var Map\MapBuilder $builder */
@@ -105,12 +110,12 @@ class MapSerializer extends Serializer implements DependencyResolverAware {
                     ? $kSerializer->unserialize($k, $kType)
                     : $this->resolver->resolve(
                         TypeDeclaration::fromData($k)
-                )->unserialize($k, TypeDeclaration::fromData($k)),
+                    )->unserialize($k, TypeDeclaration::fromData($k)),
                 $vSerializer
                     ? $vSerializer->unserialize($v, $vType)
                     : $this->resolver->resolve(
                         TypeDeclaration::fromData($v)
-                )->unserialize($v, TypeDeclaration::fromData($v))
+                    )->unserialize($v, TypeDeclaration::fromData($v))
             );
         }
 
