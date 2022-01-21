@@ -4,26 +4,27 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ec034be7462c2d7fced3f15b721c1569",
+    "content-hash": "641c91aa75ec5908cddbe302c9b31a83",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
-            "version": "0.4.1",
+            "version": "dev-FIN-12992-contracts-v2-phase-1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "de175176a4ab24f4434004934c5556c0495e4cf0"
+                "reference": "5a177aab6f995456b40e0985a91288f6aadf5516"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/de175176a4ab24f4434004934c5556c0495e4cf0",
-                "reference": "de175176a4ab24f4434004934c5556c0495e4cf0",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/5a177aab6f995456b40e0985a91288f6aadf5516",
+                "reference": "5a177aab6f995456b40e0985a91288f6aadf5516",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1, <8.0"
             },
             "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
                 "marartner/psalm-no-empty": "^1.1",
                 "orklah/psalm-insane-comparison": "1.0.3",
                 "orklah/psalm-strict-equality": "^0.1.0",
@@ -60,9 +61,9 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/dealroadshow/util/tree/0.4.1"
+                "source": "https://github.com/dealroadshow/util/tree/FIN-12992-contracts-v2-phase-1"
             },
-            "time": "2021-06-15T07:13:10+00:00"
+            "time": "2022-01-21T14:30:17+00:00"
         },
         {
             "name": "google/protobuf",
@@ -5002,7 +5003,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "dealroadshow/granule-util": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
@@ -5012,5 +5015,5 @@
         "ext-simplexml": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
