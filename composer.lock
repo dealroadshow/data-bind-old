@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "641c91aa75ec5908cddbe302c9b31a83",
+    "content-hash": "87d3ed619fd30ad7dce903b2673cb30a",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
-            "version": "dev-FIN-12992-contracts-v2-phase-1",
+            "version": "0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "5a177aab6f995456b40e0985a91288f6aadf5516"
+                "reference": "3101004a6773f2dd08e7fc23c5dc4b5efbcc0a91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/5a177aab6f995456b40e0985a91288f6aadf5516",
-                "reference": "5a177aab6f995456b40e0985a91288f6aadf5516",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/3101004a6773f2dd08e7fc23c5dc4b5efbcc0a91",
+                "reference": "3101004a6773f2dd08e7fc23c5dc4b5efbcc0a91",
                 "shasum": ""
             },
             "require": {
@@ -61,9 +61,9 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/dealroadshow/util/tree/FIN-12992-contracts-v2-phase-1"
+                "source": "https://github.com/dealroadshow/util/tree/0.4.2"
             },
-            "time": "2022-01-21T14:30:17+00:00"
+            "time": "2022-01-25T09:11:35+00:00"
         },
         {
             "name": "google/protobuf",
@@ -5003,9 +5003,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "dealroadshow/granule-util": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
