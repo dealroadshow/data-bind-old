@@ -15,11 +15,6 @@
       <code>$objects</code>
     </InvalidPropertyAssignmentValue>
   </file>
-  <file src="lib/Serializer.php">
-    <NullableReturnStatement occurrences="1">
-      <code>$response</code>
-    </NullableReturnStatement>
-  </file>
   <file src="lib/Serializer/MapSerializer.php">
     <ArgumentTypeCoercion occurrences="2">
       <code>TypeDeclaration::fromData($k)</code>
@@ -36,12 +31,22 @@
     </PossiblyNullReference>
   </file>
   <file src="lib/Serializer/TypeDetector/AccessorTypeDetector.php">
-    <ArgumentTypeCoercion occurrences="1">
+    <ArgumentTypeCoercion occurrences="2">
       <code>$getter-&gt;getReturnType()</code>
+      <code>$property-&gt;getType()</code>
     </ArgumentTypeCoercion>
-    <PossiblyNullArgument occurrences="1">
+    <PossiblyNullArgument occurrences="2">
       <code>$getter-&gt;getReturnType()</code>
+      <code>$property-&gt;getType()</code>
     </PossiblyNullArgument>
+    <PossiblyNullReference occurrences="2">
+      <code>getName</code>
+      <code>getName</code>
+    </PossiblyNullReference>
+    <UndefinedMethod occurrences="2">
+      <code>getName</code>
+      <code>getName</code>
+    </UndefinedMethod>
   </file>
   <file src="lib/Serializer/TypeDetector/PropertyDocCommentTypeDetector.php">
     <TypeDoesNotContainType occurrences="1">

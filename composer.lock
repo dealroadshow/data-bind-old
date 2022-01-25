@@ -4,26 +4,27 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e768b39878dbb1852dfc9484300145f1",
+    "content-hash": "641c91aa75ec5908cddbe302c9b31a83",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
-            "version": "0.4.1",
+            "version": "dev-FIN-12992-contracts-v2-phase-1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "de175176a4ab24f4434004934c5556c0495e4cf0"
+                "reference": "5a177aab6f995456b40e0985a91288f6aadf5516"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/de175176a4ab24f4434004934c5556c0495e4cf0",
-                "reference": "de175176a4ab24f4434004934c5556c0495e4cf0",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/5a177aab6f995456b40e0985a91288f6aadf5516",
+                "reference": "5a177aab6f995456b40e0985a91288f6aadf5516",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1, <8.0"
             },
             "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
                 "marartner/psalm-no-empty": "^1.1",
                 "orklah/psalm-insane-comparison": "1.0.3",
                 "orklah/psalm-strict-equality": "^0.1.0",
@@ -60,9 +61,54 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/dealroadshow/util/tree/0.4.1"
+                "source": "https://github.com/dealroadshow/util/tree/FIN-12992-contracts-v2-phase-1"
             },
-            "time": "2021-06-15T07:13:10+00:00"
+            "time": "2022-01-21T14:30:17+00:00"
+        },
+        {
+            "name": "google/protobuf",
+            "version": "v3.19.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/protocolbuffers/protobuf-php.git",
+                "reference": "83fe8edf7469ffdd83cb4b4e62249c154f961b9b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/83fe8edf7469ffdd83cb4b4e62249c154f961b9b",
+                "reference": "83fe8edf7469ffdd83cb4b4e62249c154f961b9b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.8.0"
+            },
+            "suggest": {
+                "ext-bcmath": "Need to support JSON deserialization"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Google\\Protobuf\\": "src/Google/Protobuf",
+                    "GPBMetadata\\Google\\Protobuf\\": "src/GPBMetadata/Google/Protobuf"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "proto library for PHP",
+            "homepage": "https://developers.google.com/protocol-buffers/",
+            "keywords": [
+                "proto"
+            ],
+            "support": {
+                "issues": "https://github.com/protocolbuffers/protobuf-php/issues",
+                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.19.1"
+            },
+            "time": "2021-10-29T00:36:13+00:00"
         }
     ],
     "packages-dev": [
@@ -4957,7 +5003,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "dealroadshow/granule-util": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
@@ -4967,5 +5015,5 @@
         "ext-simplexml": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
