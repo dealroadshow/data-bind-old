@@ -5,7 +5,7 @@
     "require": {
         "php": ">=7.4, <8.0",
         "ext-yaml": "^2.0",
-        "dealroadshow/granule-util": "0.4.2",
+        "dealroadshow/granule-util": "0.4.3",
         "ext-json": "*",
         "ext-simplexml": "*",
         "google/protobuf": "^3.19"
