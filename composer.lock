@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "588345088767e1bde90372bcb3a9275a",
+    "content-hash": "9a17c26747a53855267e32fd523264d1",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "b57dabff20a9c08a980c020c645d700a560d33e7"
+                "reference": "7aad6eccd6026a9650b9a6e43d1c16114b46e7d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/b57dabff20a9c08a980c020c645d700a560d33e7",
-                "reference": "b57dabff20a9c08a980c020c645d700a560d33e7",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/7aad6eccd6026a9650b9a6e43d1c16114b46e7d7",
+                "reference": "7aad6eccd6026a9650b9a6e43d1c16114b46e7d7",
                 "shasum": ""
             },
             "require": {
@@ -72,7 +72,7 @@
             "support": {
                 "source": "https://github.com/dealroadshow/util/tree/FIN-13060-up-to-php-8"
             },
-            "time": "2022-04-11T18:05:40+00:00"
+            "time": "2022-04-11T18:20:12+00:00"
         }
     ],
     "packages-dev": [
