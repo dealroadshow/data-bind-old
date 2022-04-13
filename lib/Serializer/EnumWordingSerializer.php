@@ -15,6 +15,7 @@ class EnumWordingSerializer extends Serializer
 
     public function serialize(mixed $data): string
     {
+        /** @var EnumWording $data */
         return $data->getWording();
     }
 

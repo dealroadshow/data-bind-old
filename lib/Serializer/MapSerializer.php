@@ -53,6 +53,7 @@ class MapSerializer extends Serializer implements DependencyResolverAware
 
     public function serialize(mixed $data): array
     {
+        /** @var Map $data */
         $result = [];
         $valueSerializer = $keySerializer = null;
         if ($data instanceof StrictTypedValue) {
@@ -96,6 +97,7 @@ class MapSerializer extends Serializer implements DependencyResolverAware
             $vSerializer = $this->resolver->resolve($vType);
         }
 
+        /** @var array $data */
         foreach ($data as $k => $v) {
             $builder->add(
                 $kSerializer && $kType ? $kSerializer->unserialize($k, $kType) : $this->resolver->resolve(

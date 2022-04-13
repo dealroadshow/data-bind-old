@@ -16,12 +16,7 @@
     "marartner/psalm-no-empty": "^1.1",
     "orklah/psalm-strict-equality": "^2.0",
     "vimeo/psalm": "^4.22",
-    "friendsofphp/php-cs-fixer": "^3.8",
-    "phpcompatibility/php-compatibility": "^9.3"
-  },
-  "scripts": {
-    "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
-    "post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
+    "friendsofphp/php-cs-fixer": "^3.8"
   },
   "prefer-stable" : true,
   "repositories": [

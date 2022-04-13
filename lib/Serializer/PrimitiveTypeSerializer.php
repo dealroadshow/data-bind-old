@@ -60,7 +60,7 @@ class PrimitiveTypeSerializer extends Serializer implements DependencyResolverAw
         return $data;
     }
 
-    public function unserializeItem($data, Type $type): float|array|bool|int|string
+    public function unserializeItem($data, Type $type): mixed
     {
         $typeName = $type->getName();
         if (in_array($typeName, ['bool', 'boolean']) && !is_bool($data)) {

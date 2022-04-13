@@ -20,7 +20,7 @@ class MessageSerializer extends Serializer
      *
      * @return string
      */
-    public function serialize($data)
+    public function serialize(mixed $data)
     {
         return json_decode($data->serializeToJsonString(), false, 512, JSON_THROW_ON_ERROR);
     }

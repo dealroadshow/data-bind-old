@@ -42,8 +42,8 @@ class POCOSerializer extends Serializer implements DependencyResolverAware
 {
     private TypeDetector $typeDetector;
     private DependencyResolver $resolver;
-    private mixed $skipNull;
-    private mixed $extendableClasses;
+    private bool $skipNull;
+    private array $extendableClasses;
 
     public function setResolver(DependencyResolver $resolver): void
     {
@@ -66,9 +66,6 @@ class POCOSerializer extends Serializer implements DependencyResolverAware
     {
         $response = [];
         foreach ($this->extractProperties($data) as $reflectionProperty) {
-            if (!$reflectionProperty->isPublic()) {
-                $reflectionProperty->setAccessible(true);
-            }
             if ($reflectionProperty->isInitialized($data)) {
                 $value = $reflectionProperty->getValue($data);
                 if ($value !== null) {
@@ -151,10 +148,6 @@ class POCOSerializer extends Serializer implements DependencyResolverAware
                 }
             } else {
                 $serializer = $this->resolver->resolve($type);
-
-                if (!$property->isPublic()) {
-                    $property->setAccessible(true);
-                }
 
                 $property->setValue($object, $serializer->unserialize($data[$key], $type));
             }
