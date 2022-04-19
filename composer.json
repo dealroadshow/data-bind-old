@@ -3,7 +3,7 @@
   "description": "Granule Data Bind Component fork",
   "type": "library",
   "require": {
-    "php": ">=8.1.4",
+    "php": ">=8.1.5",
     "ext-yaml": "^2.0",
     "dealroadshow/granule-util": "dev-FIN-13060-up-to-php-8",
     "ext-json": "*",
