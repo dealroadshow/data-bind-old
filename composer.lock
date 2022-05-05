@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d8ffd0d58a8b10a70b9bc2a344e70432",
+    "content-hash": "750833ad1eee80ebfbca09ea4d6eb26e",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
@@ -12,16 +12,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "02ca98f9d7057343b99161912e6061ea172e46b2"
+                "reference": "a7c089e3385842c76b1a454823f60f5d04537e25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/02ca98f9d7057343b99161912e6061ea172e46b2",
-                "reference": "02ca98f9d7057343b99161912e6061ea172e46b2",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/a7c089e3385842c76b1a454823f60f5d04537e25",
+                "reference": "a7c089e3385842c76b1a454823f60f5d04537e25",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1.5"
+                "php": ">=8.0.2"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.8",
@@ -64,7 +64,7 @@
                 "source": "https://github.com/dealroadshow/util/tree/FIN-13060-up-to-php-8",
                 "issues": "https://github.com/dealroadshow/util/issues"
             },
-            "time": "2022-04-13T21:33:10+00:00"
+            "time": "2022-05-05T13:57:44+00:00"
         },
         {
             "name": "google/protobuf",
@@ -4930,14 +4930,14 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "dealroadshow/granule-util": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.1.5",
+        "php": ">=8.0.2",
         "ext-yaml": "^2.0",
         "ext-json": "*",
         "ext-simplexml": "*"
