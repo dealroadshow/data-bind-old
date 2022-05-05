@@ -16,7 +16,7 @@
     "orklah/psalm-insane-comparison": "^2.0",
     "marartner/psalm-no-empty": "^1.1",
     "orklah/psalm-strict-equality": "^2.0",
-    "vimeo/psalm": "^4.22",
+    "vimeo/psalm": "^4.23",
     "friendsofphp/php-cs-fixer": "^3.8"
   },
   "prefer-stable" : true,

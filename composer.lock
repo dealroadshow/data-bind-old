@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "750833ad1eee80ebfbca09ea4d6eb26e",
+    "content-hash": "398d5cacff8193b56cfff78cf4d4db20",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "21a96a6cfd5f35071033968299cf00fb26c06050"
+                "reference": "4792bb2a15f16a0e5f67417e2663197a1523ba9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/21a96a6cfd5f35071033968299cf00fb26c06050",
-                "reference": "21a96a6cfd5f35071033968299cf00fb26c06050",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/4792bb2a15f16a0e5f67417e2663197a1523ba9d",
+                "reference": "4792bb2a15f16a0e5f67417e2663197a1523ba9d",
                 "shasum": ""
             },
             "require": {
@@ -29,7 +29,7 @@
                 "orklah/psalm-insane-comparison": "^2.0",
                 "orklah/psalm-strict-equality": "^2.0",
                 "phpunit/phpunit": "^9",
-                "vimeo/psalm": "^4.22"
+                "vimeo/psalm": "^4.23"
             },
             "type": "library",
             "autoload": {
@@ -64,7 +64,7 @@
                 "source": "https://github.com/dealroadshow/util/tree/FIN-13060-up-to-php-8",
                 "issues": "https://github.com/dealroadshow/util/issues"
             },
-            "time": "2022-05-05T14:05:04+00:00"
+            "time": "2022-05-05T16:52:04+00:00"
         },
         {
             "name": "google/protobuf",
@@ -4715,16 +4715,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "4.22.0",
+            "version": "4.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "fc2c6ab4d5fa5d644d8617089f012f3bb84b8703"
+                "reference": "f1fe6ff483bf325c803df9f510d09a03fd796f88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/fc2c6ab4d5fa5d644d8617089f012f3bb84b8703",
-                "reference": "fc2c6ab4d5fa5d644d8617089f012f3bb84b8703",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/f1fe6ff483bf325c803df9f510d09a03fd796f88",
+                "reference": "f1fe6ff483bf325c803df9f510d09a03fd796f88",
                 "shasum": ""
             },
             "require": {
@@ -4749,6 +4749,7 @@
                 "php": "^7.1|^8",
                 "sebastian/diff": "^3.0 || ^4.0",
                 "symfony/console": "^3.4.17 || ^4.1.6 || ^5.0 || ^6.0",
+                "symfony/polyfill-php80": "^1.25",
                 "webmozart/path-util": "^2.3"
             },
             "provide": {
@@ -4815,9 +4816,9 @@
             ],
             "support": {
                 "issues": "https://github.com/vimeo/psalm/issues",
-                "source": "https://github.com/vimeo/psalm/tree/4.22.0"
+                "source": "https://github.com/vimeo/psalm/tree/4.23.0"
             },
-            "time": "2022-02-24T20:34:05+00:00"
+            "time": "2022-04-28T17:35:49+00:00"
         },
         {
             "name": "webmozart/assert",
