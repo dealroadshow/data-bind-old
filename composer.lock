@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "398d5cacff8193b56cfff78cf4d4db20",
+    "content-hash": "215961d6cbedd410d1826afe9cee25ec",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
@@ -4930,7 +4930,14 @@
             "time": "2015-12-17T08:42:14+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "dealroadshow/granule-util",
+            "version": "dev-FIN-13060-up-to-php-8",
+            "alias": "0.8.1",
+            "alias_normalized": "0.8.1.0"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
         "dealroadshow/granule-util": 20

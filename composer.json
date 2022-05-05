@@ -6,7 +6,7 @@
   "require": {
     "php": ">=8.0.2",
     "ext-yaml": "^2.0",
-    "dealroadshow/granule-util": "dev-FIN-13060-up-to-php-8",
+    "dealroadshow/granule-util": "dev-FIN-13060-up-to-php-8 as 0.8.1",
     "ext-json": "*",
     "ext-simplexml": "*",
     "google/protobuf": "^3.20"
