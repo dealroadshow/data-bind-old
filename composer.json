@@ -3,6 +3,12 @@
   "description": "Granule Data Bind Component fork",
   "type": "library",
   "minimum-stability": "dev",
+  "config": {
+    "platform": {
+      "php": "8.0.2",
+      "ext-yaml": "2.2.2"
+    }
+  },
   "require": {
     "php": ">=8.0.2",
     "ext-yaml": "^2.0",

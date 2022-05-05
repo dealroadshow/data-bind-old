@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "398d5cacff8193b56cfff78cf4d4db20",
+    "content-hash": "d74f6cc718bbdd6bef8b110fd2564951",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "c19cde308768559af9ecb85f7d791600cd1f354e"
+                "reference": "155520e127262fd1d6a12160ef726d5db9017ac5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/c19cde308768559af9ecb85f7d791600cd1f354e",
-                "reference": "c19cde308768559af9ecb85f7d791600cd1f354e",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/155520e127262fd1d6a12160ef726d5db9017ac5",
+                "reference": "155520e127262fd1d6a12160ef726d5db9017ac5",
                 "shasum": ""
             },
             "require": {
@@ -64,7 +64,7 @@
                 "source": "https://github.com/dealroadshow/util/tree/FIN-13060-up-to-php-8",
                 "issues": "https://github.com/dealroadshow/util/issues"
             },
-            "time": "2022-05-05T21:56:13+00:00"
+            "time": "2022-05-05T22:56:47+00:00"
         },
         {
             "name": "google/protobuf",
@@ -4944,5 +4944,9 @@
         "ext-simplexml": "*"
     },
     "platform-dev": [],
+    "platform-overrides": {
+        "php": "8.0.2",
+        "ext-yaml": "2.2.2"
+    },
     "plugin-api-version": "2.3.0"
 }
