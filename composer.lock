@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "a7c089e3385842c76b1a454823f60f5d04537e25"
+                "reference": "21a96a6cfd5f35071033968299cf00fb26c06050"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/a7c089e3385842c76b1a454823f60f5d04537e25",
-                "reference": "a7c089e3385842c76b1a454823f60f5d04537e25",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/21a96a6cfd5f35071033968299cf00fb26c06050",
+                "reference": "21a96a6cfd5f35071033968299cf00fb26c06050",
                 "shasum": ""
             },
             "require": {
@@ -64,7 +64,7 @@
                 "source": "https://github.com/dealroadshow/util/tree/FIN-13060-up-to-php-8",
                 "issues": "https://github.com/dealroadshow/util/issues"
             },
-            "time": "2022-05-05T13:57:44+00:00"
+            "time": "2022-05-05T14:05:04+00:00"
         },
         {
             "name": "google/protobuf",
