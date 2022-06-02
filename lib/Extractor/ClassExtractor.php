@@ -39,7 +39,7 @@ class ClassExtractor extends BasicExtractor
         $this->object = $object;
     }
 
-    public function toSimpleType(): mixed
+    public function toSimpleType()
     {
         return $this->resolver
             ->resolve(Type::fromData($this->object))

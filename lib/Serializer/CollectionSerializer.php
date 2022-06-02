@@ -48,7 +48,7 @@ class CollectionSerializer extends Serializer implements DependencyResolverAware
         return $type->is(Collection::class);
     }
 
-    public function serialize(mixed $data): array
+    public function serialize($data): array
     {
         /** @var Collection $data */
         $result = [];

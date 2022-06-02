@@ -38,7 +38,7 @@ class DateTimeSerializer extends Serializer
         return is_a($type->getName(), DateTimeInterface::class, true);
     }
 
-    public function serialize(mixed $data): string
+    public function serialize($data): string
     {
         /** @var DateTimeInterface $data */
         return $data->format(DATE_RFC850);

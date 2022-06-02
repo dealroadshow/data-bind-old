@@ -36,7 +36,7 @@ class EnumSerializer extends Serializer
         return $type->is(Enum::class);
     }
 
-    public function serialize(mixed $data): string
+    public function serialize($data): string
     {
         /** @var Enum $data */
         return $data->getValue();

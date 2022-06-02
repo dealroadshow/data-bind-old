@@ -51,7 +51,7 @@ class MapSerializer extends Serializer implements DependencyResolverAware
         return $type->is(Map::class);
     }
 
-    public function serialize(mixed $data): array
+    public function serialize($data): array
     {
         /** @var Map $data */
         $result = [];

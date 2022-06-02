@@ -15,7 +15,7 @@ class MessageSerializer extends Serializer
         return $type->is(Message::class);
     }
 
-    public function serialize(mixed $data): string
+    public function serialize($data): string
     {
         /** @var Message $datax */
         return json_decode($data->serializeToJsonString(), false, 512, JSON_THROW_ON_ERROR);

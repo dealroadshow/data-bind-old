@@ -62,7 +62,7 @@ class POCOSerializer extends Serializer implements DependencyResolverAware
         return class_exists($type->getName()) && !$type->is(Message::class);
     }
 
-    public function serialize(mixed $data): array
+    public function serialize($data): array
     {
         $response = [];
         foreach ($this->extractProperties($data) as $reflectionProperty) {

@@ -13,7 +13,7 @@ class EnumWordingSerializer extends Serializer
         return $type->is(EnumWording::class);
     }
 
-    public function serialize(mixed $data): string
+    public function serialize($data): string
     {
         /** @var EnumWording $data */
         return $data->getWording();
