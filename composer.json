@@ -9,7 +9,7 @@
     "dealroadshow/granule-util": "dev-FIN-13060-up-to-php-8",
     "ext-json": "*",
     "ext-simplexml": "*",
-    "google/protobuf": "^3.20"
+    "google/protobuf": "^3.21"
   },
   "require-dev": {
     "phpunit/phpunit": "^9",
