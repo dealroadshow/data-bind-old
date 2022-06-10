@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <psalm
-        phpVersion="8.1.6"
+        phpVersion="8.1.7"
         errorLevel="3"
         strictBinaryOperands="true"
         useDocblockTypes="false"
