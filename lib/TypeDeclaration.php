@@ -27,14 +27,11 @@ namespace Granule\DataBind;
 
 use ReflectionNamedType;
 use ReflectionProperty;
-use ReflectionType;
 
 class TypeDeclaration extends Type
 {
-    /** @var bool */
-    private $nullable;
-    /** @var bool */
-    private $inArray;
+    private bool $nullable;
+    private bool $inArray;
 
     protected function __construct(
         string $name,
@@ -48,9 +45,9 @@ class TypeDeclaration extends Type
 
     public static function fromSignature(string $signature): TypeDeclaration
     {
-        $compatibilityNullable = substr($signature, 0, 1) === '?';
-        $leftNullable = substr($signature, 0, 5) === 'null|';
-        $rightNullable = substr($signature, -5) === '|null';
+        $compatibilityNullable = str_starts_with($signature, '?');
+        $leftNullable = str_starts_with($signature, 'null|');
+        $rightNullable = str_ends_with($signature, '|null');
         if ($compatibilityNullable) {
             $signature = substr($signature, 1);
         } elseif ($leftNullable) {
@@ -59,7 +56,7 @@ class TypeDeclaration extends Type
             $signature = substr($signature, 0, -5);
         }
 
-        $inArray = substr($signature, -2) === '[]';
+        $inArray = str_ends_with($signature, '[]');
         $signature = $inArray ? substr($signature, 0, -2) : $signature;
 
         return new self(
@@ -82,6 +79,7 @@ class TypeDeclaration extends Type
     {
         /** @var ReflectionNamedType $type */
         $type = $reflection->getType();
+
         return new self(
             $type->getName(),
             $type->allowsNull()

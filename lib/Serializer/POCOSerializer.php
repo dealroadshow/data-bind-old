@@ -32,6 +32,7 @@ use Granule\DataBind\InvalidDataException;
 use Granule\DataBind\Serializer;
 use Granule\DataBind\Type;
 use ReflectionClass;
+use ReflectionException;
 use ReflectionProperty;
 
 /**
@@ -39,14 +40,10 @@ use ReflectionProperty;
  */
 class POCOSerializer extends Serializer implements DependencyResolverAware
 {
-    /** @var TypeDetector */
-    private $typeDetector;
-    /** @var DependencyResolver */
-    private $resolver;
-    /** @var bool */
-    private $skipNull;
-    /** @var array */
-    private $extendableClasses;
+    private TypeDetector $typeDetector;
+    private DependencyResolver $resolver;
+    private bool $skipNull;
+    private array $extendableClasses;
 
     public function setResolver(DependencyResolver $resolver): void
     {
@@ -69,9 +66,6 @@ class POCOSerializer extends Serializer implements DependencyResolverAware
     {
         $response = [];
         foreach ($this->extractProperties($data) as $reflectionProperty) {
-            if (!$reflectionProperty->isPublic()) {
-                $reflectionProperty->setAccessible(true);
-            }
             if ($reflectionProperty->isInitialized($data)) {
                 $value = $reflectionProperty->getValue($data);
                 if ($value !== null) {
@@ -131,9 +125,9 @@ class POCOSerializer extends Serializer implements DependencyResolverAware
     }
 
     /**
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
-    protected function unserializeItem($data, Type $type)
+    protected function unserializeItem($data, Type $type): object
     {
         $class = new ReflectionClass($type->getName());
         $object = $class->newInstanceWithoutConstructor();
@@ -154,10 +148,6 @@ class POCOSerializer extends Serializer implements DependencyResolverAware
                 }
             } else {
                 $serializer = $this->resolver->resolve($type);
-
-                if (!$property->isPublic()) {
-                    $property->setAccessible(true);
-                }
 
                 $property->setValue($object, $serializer->unserialize($data[$key], $type));
             }

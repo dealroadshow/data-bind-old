@@ -34,8 +34,7 @@ use Granule\DataBind\Injector\BasicInjector;
 /** Conversion factory class */
 class Converter
 {
-    /** @var DependencyResolver */
-    private $resolver;
+    private DependencyResolver $resolver;
 
     public function __construct(DependencyResolver $resolver)
     {
@@ -57,11 +56,17 @@ class Converter
         return self::fromJSON(file_get_contents($jsonFile));
     }
 
+    /**
+     * @throws Exception
+     */
     public function fromXML(string $xml): Injector
     {
-        throw new Exception('Panding implementation');
+        throw new Exception('Pending implementation');
     }
 
+    /**
+     * @throws Exception
+     */
     public function fromXMLFile(string $xmlFile): Injector
     {
         return self::fromXML(file_get_contents($xmlFile));

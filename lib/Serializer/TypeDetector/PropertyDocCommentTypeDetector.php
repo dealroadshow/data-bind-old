@@ -28,6 +28,7 @@ namespace Granule\DataBind\Serializer\TypeDetector;
 use Granule\DataBind\TypeDeclaration;
 use Granule\DataBind\Helper;
 use Granule\DataBind\Serializer\TypeDetector;
+use PhpToken;
 use ReflectionProperty;
 
 class PropertyDocCommentTypeDetector extends TypeDetector
@@ -45,9 +46,9 @@ class PropertyDocCommentTypeDetector extends TypeDetector
 
                 if (!$typeName || !class_exists($typeName)) {
                     $sameNsTypeName = $property
-                            ->getDeclaringClass()
-                            ->getNamespaceName()
-                        .'\\'.$type->getName();
+                                          ->getDeclaringClass()
+                                          ->getNamespaceName()
+                                      . '\\' . $type->getName();
 
                     if (class_exists($sameNsTypeName)) {
                         return $type->withName($sameNsTypeName);
@@ -67,44 +68,47 @@ class PropertyDocCommentTypeDetector extends TypeDetector
 
     public static function resolveObjectType(string $shortName, string $file): ?string
     {
-        $tokens = token_get_all(file_get_contents($file));
+        $tokens = PhpToken::tokenize(file_get_contents($file));
         $ns = [];
         $nsTokens = false;
         $aliasUsed = false;
         $nsGroupPrefix = [];
 
         foreach ($tokens as $token) {
-            if (is_array($token)) {
-                if ($token[0] == T_CLASS) {
-                    return null;
-                } elseif ($token[0] == T_USE) {
-                    $nsTokens = true;
-                } elseif ($token[0] == T_STRING && $nsTokens) {
-                    if ($aliasUsed && $ns && $token[1] == $shortName) {
-                        return implode('', $ns);
-                    }
-
-                    $ns[] = $token[1];
-                } elseif ($token[0] == T_NS_SEPARATOR && $nsTokens) {
-                    $ns[] = $token[1];
-                } elseif ($token[0] == T_AS && $nsTokens) {
-                    $aliasUsed = true;
+            if ($token->id === T_CLASS) {
+                return null;
+            } elseif ($token->id === T_USE) {
+                $nsTokens = true;
+            } elseif ($token->id === T_NAME_QUALIFIED && $nsTokens) {
+                $ns[] = $token->text;
+            } elseif ($token->id === T_STRING && $nsTokens) {
+                if ($aliasUsed && $ns && $token->text === $shortName) {
+                    return implode('', $ns);
                 }
-            } elseif ($token == ';' && $nsTokens) {
+
+                $ns[] = $token->text;
+            } elseif ($token->id === T_NS_SEPARATOR && $nsTokens) {
+                $ns[] = $token->text;
+            } elseif ($token->id === T_AS && $nsTokens) {
+                $aliasUsed = true;
+            } elseif ($token->text === ';' && $nsTokens) {
                 $nsTokens = false;
 
-                if ($ns && end($ns) == $shortName) {
+                if ($ns && end($ns) === $shortName) {
+                    return implode('', $ns);
+                }
+                if (str_ends_with(implode('', $ns), $shortName)) {
                     return implode('', $ns);
                 }
 
                 $aliasUsed = false;
                 $ns = [];
-            } elseif ($token == '{' && $nsTokens) {
+            } elseif ($token->text === '{' && $nsTokens) {
                 $nsGroupPrefix = $ns;
-            } elseif ($token == '}' && $nsTokens && $nsGroupPrefix) {
+            } elseif ($token->text === '}' && $nsTokens && $nsGroupPrefix) {
                 $nsGroupPrefix = [];
-            } elseif ($token == ',' && $nsTokens && $nsGroupPrefix) {
-                if ($ns && end($ns) == $shortName) {
+            } elseif ($token->text === ',' && $nsTokens && $nsGroupPrefix) {
+                if ($ns && end($ns) === $shortName) {
                     return implode('', $ns);
                 }
 

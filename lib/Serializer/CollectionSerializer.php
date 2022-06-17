@@ -36,8 +36,7 @@ class CollectionSerializer extends Serializer implements DependencyResolverAware
 {
     use ValueTypeExtraction;
 
-    /** @var DependencyResolver */
-    private $resolver;
+    private DependencyResolver $resolver;
 
     public function setResolver(DependencyResolver $resolver): void
     {
@@ -49,13 +48,9 @@ class CollectionSerializer extends Serializer implements DependencyResolverAware
         return $type->is(Collection::class);
     }
 
-    /**
-     * @param Collection $data
-     *
-     * @return array
-     */
     public function serialize($data): array
     {
+        /** @var Collection $data */
         $result = [];
         if ($vType = $this->getValueType(TypeDeclaration::fromData($data))) {
             $serializer = $this->resolver->resolve($vType);
@@ -75,6 +70,7 @@ class CollectionSerializer extends Serializer implements DependencyResolverAware
 
     protected function unserializeItem($data, Type $type)
     {
+        /** @var array $data */
         if ($vType = $this->getValueType($type)) {
             /** @var Collection\CollectionBuilder $builder */
             $builder = call_user_func([$type->getName(), 'builder']);

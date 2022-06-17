@@ -1,6 +1,6 @@
 language: php
 php:
-  - '7.1'
+  - '8.1.7'
   - nightly
 
 before_script:

@@ -36,12 +36,9 @@ class EnumSerializer extends Serializer
         return $type->is(Enum::class);
     }
 
-    /**
-     * @param Enum $data
-     * @return string
-     */
-    public function serialize($data)
+    public function serialize($data): string
     {
+        /** @var Enum $data */
         return $data->getValue();
     }
 

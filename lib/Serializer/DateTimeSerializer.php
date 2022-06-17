@@ -38,17 +38,15 @@ class DateTimeSerializer extends Serializer
         return is_a($type->getName(), DateTimeInterface::class, true);
     }
 
-    /**
-     * @param DateTimeInterface $data
-     * @return string
-     */
-    public function serialize($data)
+    public function serialize($data): string
     {
+        /** @var DateTimeInterface $data */
         return $data->format(DATE_RFC850);
     }
 
     protected function unserializeItem($data, Type $type)
     {
+        /** @var string $data */
         $class = ($type->getName() === DateTimeInterface::class)
             ? DateTimeImmutable::class
             : $type->getName();

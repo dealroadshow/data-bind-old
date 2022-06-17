@@ -30,10 +30,8 @@ use Granule\DataBind\Type;
 
 class ClassExtractor extends BasicExtractor
 {
-    /** @var DependencyResolver */
-    private $resolver;
-    /** @var object */
-    private $object;
+    private DependencyResolver $resolver;
+    private object $object;
 
     public function __construct(DependencyResolver $resolver, $object)
     {
@@ -41,7 +39,6 @@ class ClassExtractor extends BasicExtractor
         $this->object = $object;
     }
 
-    /** {@inheritdoc} */
     public function toSimpleType()
     {
         return $this->resolver

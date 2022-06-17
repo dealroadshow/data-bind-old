@@ -29,8 +29,12 @@ interface Extractor
 {
     /** @return mixed */
     public function toSimpleType();
+
     public function toYamlString(): string;
+
     public function toYamlFile(string $path): void;
+
     public function toJsonString(): string;
+
     public function toJsonFile(string $path): void;
 }

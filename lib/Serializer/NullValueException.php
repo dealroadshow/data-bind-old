@@ -27,7 +27,6 @@ namespace Granule\DataBind\Serializer;
 
 use Granule\DataBind\InvalidDataException;
 use Granule\DataBind\Type;
-
 use ReflectionProperty;
 
 class NullValueException extends InvalidDataException
@@ -39,11 +38,13 @@ class NullValueException extends InvalidDataException
 
     public static function fromPropertyWithType(ReflectionProperty $property, Type $type): NullValueException
     {
-        return new self(sprintf(
-            'Parameter %s:%s of type %s cannot be NULL',
-            $property->getDeclaringClass()->getName(),
-            $property->getName(),
-            $type->getName()
-        ));
+        return new self(
+            sprintf(
+                'Parameter %s:%s of type %s cannot be NULL',
+                $property->getDeclaringClass()->getName(),
+                $property->getName(),
+                $type->getName()
+            )
+        );
     }
 }

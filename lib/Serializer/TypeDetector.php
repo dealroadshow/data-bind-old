@@ -43,8 +43,8 @@ abstract class TypeDetector
             return $type;
         }
 
-        if ($this->getNext()) {
-            return $this->getNext()->detect($property);
+        if ($next = $this->getNext()) {
+            return $next->detect($property);
         }
 
         throw UnknownTypeException::fromReflector($property);

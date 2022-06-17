@@ -28,11 +28,12 @@ namespace Granule\DataBind\Serializer;
 use Granule\DataBind\Type;
 use Granule\DataBind\TypeDeclaration;
 use Granule\Util\StrictTypedKey;
+use ReflectionException;
 
 trait KeyTypeExtraction
 {
     /**
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     protected function getKeyType(Type $type): ?TypeDeclaration
     {

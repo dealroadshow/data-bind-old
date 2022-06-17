@@ -28,27 +28,30 @@ namespace Granule\DataBind;
 class DependencyResolverBuilder
 {
     /** @var Serializer[] */
-    private $top = [];
+    private array $top = [];
     /** @var Serializer[] */
-    private $bottom = [];
+    private array $bottom = [];
     /** @var Serializer[] */
-    private $middle = [];
+    private array $middle = [];
 
     public function add(Serializer $serializer): DependencyResolverBuilder
     {
         $this->middle[] = $serializer;
+
         return $this;
     }
 
     public function addTop(Serializer $serializer): DependencyResolverBuilder
     {
         $this->top[] = $serializer;
+
         return $this;
     }
 
     public function addBottom(Serializer $serializer): DependencyResolverBuilder
     {
         $this->bottom[] = $serializer;
+
         return $this;
     }
 

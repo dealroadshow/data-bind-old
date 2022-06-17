@@ -1,40 +1,46 @@
 {
-    "name": "dealroadshow/granule-data-bind",
-    "description": "Granule Data Bind Component fork",
-    "type": "library",
-    "require": {
-        "php": ">=7.4, <8.0",
-        "ext-yaml": "^2.0",
-        "dealroadshow/granule-util": "0.4.3",
-        "ext-json": "*",
-        "ext-simplexml": "*",
-        "google/protobuf": "^3.19"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9",
-        "orklah/psalm-insane-comparison": "1.0.3",
-        "marartner/psalm-no-empty": "^1.1",
-        "orklah/psalm-strict-equality": "^0.1.0",
-        "vimeo/psalm": "^4.7",
-        "friendsofphp/php-cs-fixer": "^3.0"
-    },
-    "repositories": [
-      {
-        "type": "vcs",
-        "url": "git@github.com:dealroadshow/util"
-      }
-    ],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Eugene Bogachov",
-            "email": "eugene.bogachov@gmail.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": { "Granule\\DataBind\\": "lib" }
-    },
-    "autoload-dev": {
-        "psr-4": { "Granule\\Tests\\DataBind\\": "tests" }
+  "name": "dealroadshow/granule-data-bind",
+  "description": "Granule Data Bind Component fork",
+  "type": "library",
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=8.0.2",
+    "ext-yaml": "^2.0",
+    "dealroadshow/granule-util": "dev-FIN-13060-up-to-php-8",
+    "ext-json": "*",
+    "ext-simplexml": "*",
+    "google/protobuf": "^3.21"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9",
+    "orklah/psalm-insane-comparison": "^2.0",
+    "marartner/psalm-no-empty": "^1.1",
+    "orklah/psalm-strict-equality": "^2.0",
+    "vimeo/psalm": "^4.23",
+    "friendsofphp/php-cs-fixer": "^3.8"
+  },
+  "prefer-stable" : true,
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:dealroadshow/util"
     }
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Eugene Bogachov",
+      "email": "eugene.bogachov@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Granule\\DataBind\\": "lib"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Granule\\Tests\\DataBind\\": "tests"
+    }
+  }
 }

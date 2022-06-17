@@ -12,7 +12,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4.20'
+          php-version: '8.1.7'
       - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v2
@@ -22,9 +22,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest --ignore-platform-reqs --no-interaction  --no-scripts --prefer-dist
+        run: composer install --prefer-dist --no-progress --no-suggest --ignore-platform-req=ext-yaml --no-interaction  --no-scripts --prefer-dist
       - name: 'Run Psalm Static Analysis'
-        run: ./vendor/vimeo/psalm/psalm --use-baseline=baseline.xml --no-cache --no-diff
+        run: ./vendor/vimeo/psalm/psalm --use-baseline=psalm-baseline.xml --no-cache --no-diff
       - name: 'Run phpunit test'
         run: ./vendor/bin/phpunit
       - name: Check code style

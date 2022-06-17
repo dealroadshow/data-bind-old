@@ -31,10 +31,8 @@ use Granule\DataBind\Injector;
 
 class BasicInjector implements Injector
 {
-    /** @var mixed */
-    private $srcData;
-    /** @var DependencyResolver */
-    private $resolver;
+    private mixed $srcData;
+    private DependencyResolver $resolver;
 
     public function __construct($srcData, DependencyResolver $resolver)
     {

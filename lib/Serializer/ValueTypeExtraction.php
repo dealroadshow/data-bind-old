@@ -28,18 +28,18 @@ namespace Granule\DataBind\Serializer;
 use Granule\DataBind\Type;
 use Granule\DataBind\TypeDeclaration;
 use Granule\Util\StrictTypedValue;
+use ReflectionException;
 
 trait ValueTypeExtraction
 {
     /**
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     protected function getValueType(Type $type): ?TypeDeclaration
     {
         if ($type->is(StrictTypedValue::class)) {
             /** @var StrictTypedValue $fake */
-            $fake = $type->getReflection()
-                ->newInstanceWithoutConstructor();
+            $fake = $type->getReflection()->newInstanceWithoutConstructor();
 
             return TypeDeclaration::fromName($fake->getValueType());
         }

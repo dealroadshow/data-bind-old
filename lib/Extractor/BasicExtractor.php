@@ -52,34 +52,34 @@ abstract class BasicExtractor implements Extractor
 
     public function toXml(): string
     {
-//        $xml = new \SimpleXMLElement('<root/>');
-//        $xml->registerXPathNamespace();
+        //        $xml = new \SimpleXMLElement('<root/>');
+        //        $xml->registerXPathNamespace();
         $data = $this->toSimpleType();
 
         return XMLHelper::arrayToXml($data)->asXML();
 
-//        $isAssoc = function (array $array) {
-//            if (array() === $array) return false;
-//            return array_keys($array) !== range(0, count($array) - 1);
-//        };
-//
-//        $array2xml = function (array $array, \SimpleXMLElement $xml) use (&$array2xml): void {
-//            foreach($array as $key => $value){
-//                if (is_int($key)) {
-//                    $key = 'gdb-element';
-//                }
-//                if(is_array($value)){
-//                    $array2xml($value, $xml->addChild($key));
-//                } else {
-//                    $xml->addChild($key, $value);
-//                }
-//            }
-//        };
-//
-//        $array2xml($data, $xml);
-//
-//        print_r($data);
-//
-//        return $xml->asXML();
+        //        $isAssoc = function (array $array) {
+        //            if (array() === $array) return false;
+        //            return array_keys($array) !== range(0, count($array) - 1);
+        //        };
+        //
+        //        $array2xml = function (array $array, \SimpleXMLElement $xml) use (&$array2xml): void {
+        //            foreach($array as $key => $value){
+        //                if (is_int($key)) {
+        //                    $key = 'gdb-element';
+        //                }
+        //                if(is_array($value)){
+        //                    $array2xml($value, $xml->addChild($key));
+        //                } else {
+        //                    $xml->addChild($key, $value);
+        //                }
+        //            }
+        //        };
+        //
+        //        $array2xml($data, $xml);
+        //
+        //        print_r($data);
+        //
+        //        return $xml->asXML();
     }
 }

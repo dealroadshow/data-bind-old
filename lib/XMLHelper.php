@@ -2,27 +2,29 @@
 
 namespace Granule\DataBind;
 
+use SimpleXMLElement;
+
 final class XMLHelper
 {
     public static function isAssoc(array $array): bool
     {
-        if (array() === $array) {
+        if ([] === $array) {
             return false;
         }
 
         return array_keys($array) !== range(0, count($array) - 1);
     }
 
-    public static function arrayToXml(array $array): \SimpleXMLElement
+    public static function arrayToXml(array $array): SimpleXMLElement
     {
         if (self::isAssoc($array)) {
-            return self::assocArrayToXml($array, new \SimpleXMLElement("<gdb-element/>"));
+            return self::assocArrayToXml($array, new SimpleXMLElement("<gdb-element/>"));
         } else {
-            return self::indexedArrayToXml($array, new \SimpleXMLElement("<gdb-collection/>"));
+            return self::indexedArrayToXml($array, new SimpleXMLElement("<gdb-collection/>"));
         }
     }
 
-    private static function assocArrayToXml(array $array, \SimpleXMLElement $xml): \SimpleXMLElement
+    private static function assocArrayToXml(array $array, SimpleXMLElement $xml): SimpleXMLElement
     {
         foreach ($array as $key => $value) {
             if (is_array($value)) {
@@ -39,7 +41,7 @@ final class XMLHelper
         return $xml;
     }
 
-    private static function indexedArrayToXml(array $array, \SimpleXMLElement $xml): \SimpleXMLElement
+    private static function indexedArrayToXml(array $array, SimpleXMLElement $xml): SimpleXMLElement
     {
         foreach ($array as $value) {
             if (is_array($value)) {

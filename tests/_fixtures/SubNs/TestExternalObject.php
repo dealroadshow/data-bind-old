@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 Eugene Bogachov
+ * Copyright (c) 2021 Finsight LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,41 +23,15 @@
  * SOFTWARE.
  */
 
-namespace Granule\DataBind;
+namespace Granule\Tests\DataBind\_fixtures\SubNs;
 
-use ReflectionProperty;
-
-final class Helper
+class TestExternalObject
 {
-    /** @psalm-suppress UnusedConstructor */
-    private function __construct()
+    /** @var string */
+    private $name;
+
+    public function getName(): string
     {
-    }
-
-    public static function getDocStatement(
-        ReflectionProperty $reflectionProperty,
-        string $statement
-    ): ?string {
-        $regexp = sprintf('/@%s\s+([\\a-zA-Z0-9_?|]+)\s+[.*]/s', $statement);
-        if (preg_match_all($regexp, $reflectionProperty->getDocComment(), $matches)) {
-            return $matches[1][0];
-        }
-
-        return null;
-    }
-
-    public static function isBuiltinType(string $type): bool
-    {
-        return in_array($type, [
-            'bool',
-            'boolean',
-            'int',
-            'integer',
-            'float',
-            'double',
-            'string',
-            'array',
-            'iterable'
-        ]);
+        return $this->name;
     }
 }

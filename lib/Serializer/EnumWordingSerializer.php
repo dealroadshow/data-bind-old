@@ -13,12 +13,9 @@ class EnumWordingSerializer extends Serializer
         return $type->is(EnumWording::class);
     }
 
-    /**
-     * @param EnumWording $data
-     * @return string
-     */
-    public function serialize($data)
+    public function serialize($data): string
     {
+        /** @var EnumWording $data */
         return $data->getWording();
     }
 

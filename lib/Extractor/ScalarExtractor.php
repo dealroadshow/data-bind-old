@@ -27,8 +27,7 @@ namespace Granule\DataBind\Extractor;
 
 class ScalarExtractor extends BasicExtractor
 {
-    /** @var int|float|string|bool */
-    private $value;
+    private string|int|bool|float $value;
 
     public function __construct($value)
     {
