@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "81ead3008b47e11adb3c8bc1ed77973d",
+    "content-hash": "e0a5bb863ab29fbc356882b7a2202bc6",
     "packages": [
         {
             "name": "dealroadshow/granule-util",
-            "version": "dev-FIN-13060-up-to-php-8",
+            "version": "0.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealroadshow/util.git",
-                "reference": "2ac29be4923d58ab320d1674a3dc4e03a6e4ab47"
+                "reference": "589ca384a3237c0388f99fdd62b30b0678106fff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealroadshow/util/zipball/2ac29be4923d58ab320d1674a3dc4e03a6e4ab47",
-                "reference": "2ac29be4923d58ab320d1674a3dc4e03a6e4ab47",
+                "url": "https://api.github.com/repos/dealroadshow/util/zipball/589ca384a3237c0388f99fdd62b30b0678106fff",
+                "reference": "589ca384a3237c0388f99fdd62b30b0678106fff",
                 "shasum": ""
             },
             "require": {
@@ -61,10 +61,10 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/dealroadshow/util/tree/FIN-13060-up-to-php-8",
+                "source": "https://github.com/dealroadshow/util/tree/0.5.1",
                 "issues": "https://github.com/dealroadshow/util/issues"
             },
-            "time": "2022-06-13T15:57:24+00:00"
+            "time": "2022-06-17T10:25:01+00:00"
         },
         {
             "name": "google/protobuf",
@@ -4939,9 +4939,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "dealroadshow/granule-util": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
