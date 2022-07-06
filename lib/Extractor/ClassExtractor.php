@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /*
  * MIT License
  *
@@ -31,9 +31,9 @@ use Granule\DataBind\Type;
 class ClassExtractor extends BasicExtractor
 {
     private DependencyResolver $resolver;
-    private object|bool|int|string|array|null $object = null;
+    private mixed $object = null;
 
-    public function __construct(DependencyResolver $resolver, $object)
+    public function __construct(DependencyResolver $resolver, mixed $object)
     {
         $this->resolver = $resolver;
         $this->object = $object;
