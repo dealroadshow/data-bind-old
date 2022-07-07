@@ -33,9 +33,9 @@ use Granule\DataBind\Type;
 class ClassExtractor extends BasicExtractor
 {
     private DependencyResolver $resolver;
-    private object|bool|int|string|array|null $object = null;
+    private object|bool|int|float|string|array|null $object;
 
-    public function __construct(DependencyResolver $resolver, object|bool|int|string|array|null $object)
+    public function __construct(DependencyResolver $resolver, object|bool|int|float|string|array|null $object)
     {
         $this->resolver = $resolver;
         $this->object = $object;
