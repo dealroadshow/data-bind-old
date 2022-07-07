@@ -21,7 +21,6 @@ use PHPUnit\Framework\TestCase;
  */
 class ClassExtractorTest extends TestCase
 {
-
     private static DependencyResolver $resolver;
 
     public static function setUpBeforeClass(): void
@@ -63,12 +62,14 @@ class ClassExtractorTest extends TestCase
      * @dataProvider getNotPrimitiveDataForClassExtractor
      * @covers ::toSimpleType
      */
-    public function it_should_return_not_scalar_types(object $value): void {
+    public function it_should_return_not_scalar_types(object $value): void
+    {
         $this->assertIsNotScalar($value);
         $this->assertIsArray((new ClassExtractor(self::$resolver, $value))->toSimpleType());
     }
 
-    public function getNotPrimitiveDataForClassExtractor(): array {
+    public function getNotPrimitiveDataForClassExtractor(): array
+    {
         return [
             [TestCollection::builder()->add(new TestInternalObject())->build()],
             [new TestInternalObject()],
@@ -77,7 +78,8 @@ class ClassExtractorTest extends TestCase
         ];
     }
 
-    public function getPrimitiveDataForClassExtractor(): array {
+    public function getPrimitiveDataForClassExtractor(): array
+    {
         return [
             [25],
             [25.1],
