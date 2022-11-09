@@ -14,5 +14,5 @@ class TestEnumWording extends EnumWording
 {
     private const
         Yes = 'yes',
-        No = 'no';
+    No = 'no';
 }

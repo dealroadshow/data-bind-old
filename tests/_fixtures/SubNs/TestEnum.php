@@ -35,5 +35,5 @@ class TestEnum extends Enum
 {
     private const
         yes = 'yes',
-        no = 'no';
+    no = 'no';
 }
