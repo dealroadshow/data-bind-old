@@ -2,7 +2,8 @@
 
 namespace Granule\Tests\DataBind\_fixtures\SubNs;
 
-enum TestNativeEnum {
+enum TestNativeEnum
+{
     case One;
     case Two;
 }
