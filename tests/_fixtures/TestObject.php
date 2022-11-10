@@ -30,6 +30,7 @@ use Granule\Tests\DataBind\_fixtures\SubNs\{TestArrayMap};
 use Granule\Tests\DataBind\_fixtures\SubNs\{TestArrayMap as AliasForMap};
 use Granule\Tests\DataBind\_fixtures\SubNs\TestEnum;
 use Granule\Tests\DataBind\_fixtures\SubNs\TestExternalObject as AliasForObject;
+use Granule\Tests\DataBind\_fixtures\SubNs\TestNativeEnum;
 
 class TestObject
 {
@@ -61,6 +62,7 @@ class TestObject
     protected $somebool;
     /** @var TestEnum */
     private $question;
+    private TestNativeEnum $nativeEnum;
 
     public function getLayer(): TestInternalObject
     {

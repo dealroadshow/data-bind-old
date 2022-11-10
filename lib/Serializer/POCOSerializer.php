@@ -32,6 +32,7 @@ use Granule\DataBind\InvalidDataException;
 use Granule\DataBind\Serializer;
 use Granule\DataBind\Type;
 use ReflectionClass;
+use ReflectionEnum;
 use ReflectionException;
 use ReflectionProperty;
 
