@@ -30,12 +30,14 @@ use Granule\DataBind\Converter;
 use Granule\DataBind\DependencyResolver;
 use Granule\Tests\DataBind\_fixtures\SubNs\TestArrayMap;
 use Granule\Tests\DataBind\_fixtures\SubNs\TestEnum;
+use Granule\Tests\DataBind\_fixtures\SubNs\TestNativeEnum;
 use Granule\Tests\DataBind\_fixtures\TestCollection;
 use Granule\Tests\DataBind\_fixtures\TestInternalObject;
 use Granule\Tests\DataBind\_fixtures\TestObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionException;
+use UnitEnum;
 
 /**
  * @group integration
@@ -84,7 +86,8 @@ class ConverterTest extends TestCase
                     'somebool' => true,
                     'question' => 'yes',
                     'layer' => ['name' => 'the one'],
-                    'birthdate' => 'Friday, 20-Jul-84 00:00:00 UTC'
+                    'birthdate' => 'Friday, 20-Jul-84 00:00:00 UTC',
+                    'nativeEnum' => ['name' => 'One'],
                 ],
                 TestObject::class
             ]
@@ -213,6 +216,17 @@ class ConverterTest extends TestCase
                     return $value;
                 },
                 TestEnum::yes()
+            ],
+            'enum' => [
+                $fixture,
+                'nativeEnum',
+                function ($value) {
+                    return $value instanceof UnitEnum;
+                },
+                function ($value) {
+                    return $value;
+                },
+                TestNativeEnum::One
             ]
         ];
     }
