@@ -31,6 +31,7 @@ use Granule\DataBind\Serializer\EnumSerializer;
 use Granule\DataBind\Serializer\EnumWordingSerializer;
 use Granule\DataBind\Serializer\MapSerializer;
 use Granule\DataBind\Serializer\MessageSerializer;
+use Granule\DataBind\Serializer\NativeEnumSerializer;
 use Granule\DataBind\Serializer\POCOSerializer;
 use Granule\DataBind\Serializer\PrimitiveTypeSerializer;
 use Granule\DataBind\Serializer\TypeDetector\AccessorTypeDetector;
@@ -68,6 +69,7 @@ class DependencyResolver
             ->add(new MapSerializer())
             ->add(new EnumWordingSerializer())
             ->add(new EnumSerializer())
+            ->add(new NativeEnumSerializer())
             ->addBottom(
                 new POCOSerializer(
                     new PropertyTypeDetector(

@@ -131,28 +131,11 @@ class POCOSerializer extends Serializer implements DependencyResolverAware
     protected function unserializeItem($data, Type $type): object
     {
         $class = new ReflectionClass($type->getName());
+        $object = $class->newInstanceWithoutConstructor();
 
         if (!is_array($data)) {
             throw InvalidDataException::fromTypeAndData($type, $data);
         }
-
-        if ($class->isEnum()) {
-            $class = new ReflectionEnum($type->getName());
-
-            if ($class->hasCase($data['name'])) {
-                return constant(
-                    sprintf(
-                        '%s::%s',
-                        $type->getName(),
-                        $data['name']
-                    )
-                );
-            } else {
-                throw InvalidDataException::fromTypeAndData($type, $data);
-            }
-        }
-
-        $object = $class->newInstanceWithoutConstructor();
 
         foreach ($this->extractProperties($object) as $property) {
             $key = $property->getName();
