@@ -63,6 +63,7 @@ class TestObject
     /** @var TestEnum */
     private $question;
     private TestNativeEnum $nativeEnum;
+    private ?string $strictTypedNullableString;
 
     public function getLayer(): TestInternalObject
     {

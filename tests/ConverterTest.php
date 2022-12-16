@@ -88,6 +88,7 @@ class ConverterTest extends TestCase
                     'layer' => ['name' => 'the one'],
                     'birthdate' => 'Friday, 20-Jul-84 00:00:00 UTC',
                     'nativeEnum' => ['name' => 'One'],
+                    'strictTypedNullableString' => null,
                 ],
                 TestObject::class
             ]
@@ -227,7 +228,18 @@ class ConverterTest extends TestCase
                     return $value;
                 },
                 TestNativeEnum::One
-            ]
+            ],
+            'strictTypedNullableString' => [
+                $fixture,
+                'strictTypedNullableString',
+                function ($value) {
+                    return is_null($value);
+                },
+                function ($value) {
+                    return $value;
+                },
+                null
+            ],
         ];
     }
 
