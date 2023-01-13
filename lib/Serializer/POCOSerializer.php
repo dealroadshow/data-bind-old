@@ -143,7 +143,7 @@ class POCOSerializer extends Serializer implements DependencyResolverAware
 
             if (!array_key_exists($key, $data) || $data[$key] === null) {
                 if ($type->isNullable()) {
-                    continue;
+                    $property->setValue($object, null);
                 } else {
                     throw NullValueException::fromPropertyWithType($property, $type);
                 }
