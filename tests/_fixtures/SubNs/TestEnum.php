@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /*
  * MIT License
  *
@@ -35,5 +37,5 @@ class TestEnum extends Enum
 {
     private const
         yes = 'yes',
-    no = 'no';
+        no = 'no';
 }

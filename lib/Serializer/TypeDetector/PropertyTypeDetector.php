@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /*
  * MIT License
  *
@@ -61,7 +63,6 @@ class PropertyTypeDetector extends TypeDetector
 
             return $type;
         }
-
 
         return null;
     }

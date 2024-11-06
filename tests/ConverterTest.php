@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /*
  * MIT License
  *
@@ -65,23 +67,23 @@ class ConverterTest extends TestCase
                     'someint' => 1235,
                     'layers' => [
                         ['name' => 'layer 1'],
-                        ['name' => 'layer 18']
+                        ['name' => 'layer 18'],
                     ],
                     'collection' => [
                         ['name' => 'layer 1'],
-                        ['name' => 'layer 18']
+                        ['name' => 'layer 18'],
                     ],
                     'collection2' => [
                         ['name' => 'layer 1'],
-                        ['name' => 'layer 18']
+                        ['name' => 'layer 18'],
                     ],
                     'map' => [
                         'l1' => ['name' => 'layer 1'],
-                        'l18' => ['name' => 'layer 18']
+                        'l18' => ['name' => 'layer 18'],
                     ],
                     'map2' => [
                         'l1' => ['name' => 'layer 1'],
-                        'l18' => ['name' => 'layer 18']
+                        'l18' => ['name' => 'layer 18'],
                     ],
                     'somebool' => true,
                     'question' => 'yes',
@@ -90,8 +92,8 @@ class ConverterTest extends TestCase
                     'nativeEnum' => ['name' => 'One'],
                     'strictTypedNullableString' => null,
                 ],
-                TestObject::class
-            ]
+                TestObject::class,
+            ],
         ];
     }
 
@@ -128,7 +130,7 @@ class ConverterTest extends TestCase
                 function ($value) {
                     return $value;
                 },
-                null
+                null,
             ],
             'leftNullableString' => [
                 $fixture,
@@ -139,7 +141,7 @@ class ConverterTest extends TestCase
                 function ($value) {
                     return $value;
                 },
-                null
+                null,
             ],
             'rightNullableString' => [
                 $fixture,
@@ -150,7 +152,7 @@ class ConverterTest extends TestCase
                 function ($value) {
                     return $value;
                 },
-                null
+                null,
             ],
             'string' => [
                 $fixture,
@@ -161,7 +163,7 @@ class ConverterTest extends TestCase
                 function ($value) {
                     return $value;
                 },
-                'some text'
+                'some text',
             ],
             'int' => [
                 $fixture,
@@ -172,7 +174,7 @@ class ConverterTest extends TestCase
                 function ($value) {
                     return $value;
                 },
-                1235
+                1235,
             ],
             'object' => [
                 $fixture,
@@ -183,7 +185,7 @@ class ConverterTest extends TestCase
                 function (TestInternalObject $value) {
                     return $value->getName();
                 },
-                'the one'
+                'the one',
             ],
             'DateTime' => [
                 $fixture,
@@ -194,7 +196,7 @@ class ConverterTest extends TestCase
                 function (DateTimeImmutable $value) {
                     return $value->format(DATE_RFC850);
                 },
-                'Friday, 20-Jul-84 00:00:00 UTC'
+                'Friday, 20-Jul-84 00:00:00 UTC',
             ],
             'bool' => [
                 $fixture,
@@ -205,7 +207,7 @@ class ConverterTest extends TestCase
                 function ($value) {
                     return $value;
                 },
-                true
+                true,
             ],
             'Enum' => [
                 $fixture,
@@ -216,7 +218,7 @@ class ConverterTest extends TestCase
                 function ($value) {
                     return $value;
                 },
-                TestEnum::yes()
+                TestEnum::yes(),
             ],
             'enum' => [
                 $fixture,
@@ -227,7 +229,7 @@ class ConverterTest extends TestCase
                 function ($value) {
                     return $value;
                 },
-                TestNativeEnum::One
+                TestNativeEnum::One,
             ],
             'strictTypedNullableString' => [
                 $fixture,
@@ -238,7 +240,7 @@ class ConverterTest extends TestCase
                 function ($value) {
                     return $value;
                 },
-                null
+                null,
             ],
         ];
     }
@@ -263,7 +265,7 @@ class ConverterTest extends TestCase
         string $param,
         callable $check,
         callable $cast,
-        $expected
+        $expected,
     ): void {
         /** @var TestObject $deserialized */
         $deserialized = self::$converter
@@ -297,7 +299,7 @@ class ConverterTest extends TestCase
                 function ($value) {
                     return $value[0]->getName();
                 },
-                'layer 1'
+                'layer 1',
             ],
             'ArrayCollection' => [
                 $fixture,
@@ -312,7 +314,7 @@ class ConverterTest extends TestCase
                 function ($value) {
                     return $value[0]->getName();
                 },
-                'layer 1'
+                'layer 1',
             ],
             'ArrayMap' => [
                 $fixture,
@@ -327,8 +329,8 @@ class ConverterTest extends TestCase
                 function ($value) {
                     return $value['l18']->getName();
                 },
-                'layer 18'
-            ]
+                'layer 18',
+            ],
         ];
     }
 
@@ -356,7 +358,7 @@ class ConverterTest extends TestCase
         int $count,
         callable $checkItemType,
         callable $castItem,
-        $expected
+        $expected,
     ): void {
         /** @var TestObject $deserealized */
         $deserealized = self::$converter

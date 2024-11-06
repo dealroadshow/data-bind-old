@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /*
  * MIT License
  *
@@ -36,7 +38,7 @@ class TypeDeclaration extends Type
     protected function __construct(
         string $name,
         bool $nullable = false,
-        bool $inArray = false
+        bool $inArray = false,
     ) {
         parent::__construct($name);
         $this->nullable = $nullable;
@@ -73,7 +75,6 @@ class TypeDeclaration extends Type
             $reflection->allowsNull()
         );
     }
-
 
     public static function fromReflectionProperty(ReflectionProperty $reflection): TypeDeclaration
     {

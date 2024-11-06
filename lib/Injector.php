@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /*
  * MIT License
  *
@@ -29,6 +31,7 @@ interface Injector
 {
     /** @return object */
     public function toObject(string $class);
+
     /** @return object[] */
     public function toArrayOf(string $class): array;
 }

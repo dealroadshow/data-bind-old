@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /*
  * MIT License
  *
@@ -36,7 +38,7 @@ final class Helper
 
     public static function getDocStatement(
         ReflectionProperty $reflectionProperty,
-        string $statement
+        string $statement,
     ): ?string {
         $regexp = sprintf('/@%s\s+([\\a-zA-Z0-9_?|]+)\s+[.*]/s', $statement);
         if (preg_match_all($regexp, $reflectionProperty->getDocComment(), $matches)) {
@@ -57,7 +59,7 @@ final class Helper
             'double',
             'string',
             'array',
-            'iterable'
+            'iterable',
         ]);
     }
 }

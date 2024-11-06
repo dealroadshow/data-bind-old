@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Granule\DataBind;
 
 use SimpleXMLElement;

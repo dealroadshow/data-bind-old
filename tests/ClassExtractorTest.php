@@ -40,17 +40,21 @@ class ClassExtractorTest extends TestCase
         switch (gettype($value)) {
             case 'integer':
                 $this->assertIsInt((new ClassExtractor(self::$resolver, $value))->toSimpleType());
+
                 break;
             case 'float':
             case 'double':
                 $this->assertIsFloat((new ClassExtractor(self::$resolver, $value))->toSimpleType());
+
                 break;
             case 'boolean':
                 $this->assertIsBool((new ClassExtractor(self::$resolver, $value))->toSimpleType());
+
                 break;
             case 'object':
             case 'string':
                 $this->assertIsString((new ClassExtractor(self::$resolver, $value))->toSimpleType());
+
                 break;
             default:
                 throw new UnknownTypeException();

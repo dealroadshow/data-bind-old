@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /*
  * MIT License
  *
@@ -52,7 +54,7 @@ class AccessorTypeDetector extends TypeDetector
             [
                 'get'.$getterSuffix,
                 'is'.$getterSuffix,
-                $getterSuffix
+                $getterSuffix,
             ] as $getterName
         ) {
             if ($reflectionClass->hasMethod($getterName)) {

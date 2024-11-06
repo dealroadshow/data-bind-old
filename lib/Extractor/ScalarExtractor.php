@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /*
  * MIT License
  *
@@ -39,7 +41,6 @@ class ScalarExtractor extends BasicExtractor
 
         $this->value = $value;
     }
-
 
     public function toSimpleType()
     {
